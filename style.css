@@ -1,0 +1,718 @@
+/* Botón de iniciar conversación */
+#startConversationButton {
+  padding: 10px;
+  border: none;
+  background-color: #333;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+#startConversationButton:hover {
+  background-color: #5A8BCC;
+
+}
+
+/* Botón de enviar mensaje */
+#sendButton {
+  padding: 10px;
+  border: none;
+  background-color: #4473B2;
+  color: white;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#sendButton:hover {
+  background-color: #5A8BCC;
+}
+
+/* Burbuja de chat */
+.chat-bubble {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  /* Ubicada a la derecha */
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #171212;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+}
+
+.chat-bubble:hover {
+  background-color: #5A8BCC;
+}
+
+.chat-bubble img {
+  width: 40px;
+  height: 40px;
+}
+
+.chat-container {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  /* Ubicada a la derecha */
+  width: 450px;
+  height: 450px;
+  background-color: #333;
+  z-index: 1000;
+  border-radius: 20px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+@media (min-width: 769px) {
+  .chat-container {
+    border: 0px solid black;
+    /* Contorno negro más grueso */
+  }
+}
+
+@media (min-width: 769px) {
+  .chat-header {
+    display: flex !important;
+    visibility: visible !important;
+  }
+}
+
+
+.chat-content-vertical {
+  width: 100%;
+  height: 100%;
+  background-color: #F1F4F9;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #333;
+  height: 60px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  padding: 0 15px;
+  position: relative;
+}
+
+.chat-header img {
+  max-height: 40px;
+}
+
+.chat-header-title {
+  display: flex;
+}
+
+.chat-bot-info {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.chat-bot-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.chat-bot-title {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 5px;
+  color: #4473B2;
+}
+
+.chat-bot-subtitle {
+  display: block;
+  font-size: 12px;
+  color: #555;
+}
+
+.chat-close {
+  cursor: pointer;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 20px;
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  transition: background-color 0.3s ease;
+  color: #4473B2;
+}
+
+.chat-close:hover {
+  background-color: #FF4D4D;
+  color: white;
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  border: 1px solid #E0E0E0;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  font-size: 14px;
+  color: #333;
+  background-color: #FFFFFF;
+}
+
+.chat-messages p {
+  margin: 0 0 10px;
+}
+
+.chat-input-container {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #E0E0E0;
+  background-color: #F1F4F9;
+}
+
+.chat-input-container input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #E0E0E0;
+  border-radius: 5px 0 0 5px;
+  background-color: #FFFFFF;
+  color: #333;
+}
+
+.chat-input-container button {
+  padding: 10px;
+  border: none;
+  background-color: #4473B2;
+  color: white;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .chat-container {
+    width: 100%;
+    height: 100%;
+    right: 0;
+    /* Ubicada a la derecha */
+    bottom: 0;
+    border-radius: 0;
+  }
+
+  .chat-input-container {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #E0E0E0;
+    width: 100%;
+    background-color: #F1F4F9;
+  }
+
+  .chat-input-container input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #E0E0E0;
+    border-radius: 0;
+    background-color: #FFFFFF;
+    color: #333;
+  }
+
+  .chat-input-container button {
+    padding: 10px;
+    border: none;
+    background-color: #4473B2;
+    color: white;
+    border-radius: 0;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .chat-header {
+    height: 60px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    padding: 0 15px;
+    position: relative;
+  }
+
+  .chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    border: 1px solid #E0E0E0;
+    border-radius: 0;
+    padding: 10px;
+    margin: 0;
+    font-size: 14px;
+    color: #333;
+    background-color: #FFFFFF;
+  }
+}
+
+@media (max-width: 768px) {
+
+  /* Ajustes para el botón de iniciar conversación */
+  #startConversationButton {
+    padding: 10px;
+    border-radius: 20px;
+    width: calc(100% - 20px);
+    /* Asegurarse que el botón no se corte */
+    margin: 10px;
+    /* Añadir márgenes alrededor del botón */
+    box-sizing: border-box;
+    /* Para incluir el padding en el ancho total */
+  }
+
+  /* Ajustes para el botón de enviar mensaje */
+  #sendButton {
+    border-radius: 0 5px 5px 0;
+    margin: 0 10px 10px 0;
+    /* Añadir margen inferior */
+    box-sizing: border-box;
+    /* Para incluir el padding en el ancho total */
+  }
+
+  /* Ajustes para el input de chat */
+  .chat-input-container input {
+    border-radius: 5px 0 0 5px;
+    margin: 0 0 10px 10px;
+    /* Añadir margen inferior */
+    box-sizing: border-box;
+    /* Para incluir el padding en el ancho total */
+  }
+
+  /* Ajustes generales para asegurar el centrado y alineación */
+  .chat-input-container {
+    display: flex;
+    padding: 10px;
+    /* Añadir padding alrededor */
+    box-sizing: border-box;
+    /* Para incluir el padding en el ancho total */
+  }
+}
+
+.user-message {
+  justify-content: flex-end;
+  margin-right: 0;
+  margin-left: auto;
+  /* Asegura que la burbuja del usuario no tenga margen derecho */
+}
+
+.assistant-message {
+  justify-content: flex-start;
+  margin-left: 0;
+  margin-right: auto;
+  /* Asegura que la burbuja del asistente no tenga margen izquierdo */
+}
+
+.message-wrapper {
+  display: flex;
+  margin-bottom: 5px;
+  /* Aumentar el espaciado entre los mensajes */
+  padding: 5px;
+  max-width: 100%;
+  /* Permitir que las burbujas ocupen hasta el ancho completo */
+}
+
+.message-bubble {
+  display: inline-flex;
+  padding: 10px;
+  border-radius: 10px;
+  position: relative;
+  font-size: 14px;
+  word-wrap: break-word;
+  max-width: 80%;
+  align-items: center;
+}
+
+
+.user-message .message-bubble {
+  background-color: #c4d8f8;
+  /* Color similar a WhatsApp para el usuario */
+  color: #000;
+  /* Texto negro */
+  border-top-right-radius: 0;
+  justify-content: flex-end;
+  align-self: flex-end;
+}
+
+.assistant-message .message-bubble {
+  display: flex;
+  align-items: center;
+  background-color: #ececec;
+  color: #000;
+  border-top-left-radius: 0;
+  justify-content: flex-start;
+  align-self: flex-start;
+}
+
+.assistant-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.message-text {
+  display: inline-block;
+  max-width: 100%;
+  /* Ajustar según el tamaño de la imagen */
+}
+
+
+
+/* Estilos para el nombre del remitente */
+.message-bubble strong {
+  display: block;
+  margin-bottom: 5px;
+}
+
+
+
+
+
+/* Estilos pagina princpal */
+
+/* Estilos base y de reinicio */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #F1F4F9;
+  background-color: #171212
+}
+
+.title {
+  font-family: 'PT Sans', sans-serif;
+  font-style: italic;
+  font-weight: 900;
+  
+}
+#animating-word {
+    display: inline-block;
+}
+
+.cursor {
+  display: inline-block;
+  margin-left: 2px;
+  opacity: 1;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% {
+      opacity: 1;
+  }
+  50.01%, 100% {
+      opacity: 0;
+  }
+}
+
+
+
+
+.container {
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+}
+
+/* Estilos de navegación, importado de Bootsrap */
+
+/* Estilos de la sección hero */
+.hero {
+  background: #171212;
+  padding: 8rem 0 4rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.btn {
+  display: inline-block;
+  background: #6d0ae6;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background: #57b9ea;
+}
+
+/* Estilos de la sección de cursos destacados */
+.featured-courses {
+  padding: 4rem 0;
+  background: #171212;
+}
+
+.course-cards {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.course-card {
+  width: calc(33.33% - 1rem);
+  margin-bottom: 2rem;
+  box-shadow: 6px 9px 4px rgb(58, 63, 223, 0.1);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.course-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.course-card-content {
+  padding: 1rem;
+}
+
+/* Media query para pantallas más pequeñas (tablets) */
+@media (max-width: 768px) {
+  .course-card {
+    width: calc(50% - 1rem);
+    /* Dos tarjetas por fila */
+  }
+}
+
+/* Media query para pantallas aún más pequeñas (móviles) */
+@media (max-width: 480px) {
+  .course-card {
+    width: 100%;
+    /* Una tarjeta por fila */
+    margin-bottom: 2rem;
+  }
+}
+
+
+/* Estilos de la sección de rutas de aprendizaje */
+.learning-paths {
+  position: relative;
+  /* Necesario para que el pseudo-elemento se posicione correctamente */
+  padding: 4rem 0;
+  text-align: center;
+  color: #fff;
+  /* Cambia el color del texto si es necesario para que sea legible sobre la imagen */
+}
+
+.learning-paths::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('images/f1.webp') no-repeat center center/cover;
+  /* Ajusta la ruta a tu imagen */
+  opacity: 0.1;
+  /* Ajusta la opacidad aquí */
+  z-index: -1;
+  /* Envía la imagen detrás del contenido */
+}
+
+
+
+/* Estilos de la sección de historias de éxito */
+.success-stories {
+  padding: 4rem 0;
+  background: #171212;
+  overflow: hidden;
+}
+
+.testimonials {
+  display: flex;
+  animation: scroll 70s linear infinite;
+}
+
+.testimonial {
+  flex: 0 0 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+  transform: translateX(calc(-100% * 6)); /* Ajusta el número de testimonios */
+  }
+}
+
+/* Estilos del pie de página */
+footer {
+  background: #171212;
+  color: #fff;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+footer ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin-bottom: 1rem;
+}
+
+footer ul li {
+  padding: 0 1rem;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Estilos del Blog */
+
+
+
+.container.my-5 {
+  background-color: #171212;
+  /* Fondo negro */
+  color: #fff;
+  /* Texto blanco */
+  padding: 1rem;
+  /* Añadir un poco de relleno para que el contenido no esté pegado al borde */
+  border-radius: 0.1rem;
+  /* Bordes redondeados opcionales */
+}
+
+
+.navbar {
+  background-color: #171212;
+  /* Fondo oscuro personalizado */
+}
+
+.carousel-item img {
+  opacity: 0.4;
+}
+.carousel-caption {
+  text-align: center;
+}
+
+.carousel-caption button {
+  margin-top: 10px;
+  background-color: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  font-size: 1rem;
+}
+
+@media (max-width: 576px) {
+  .carousel-caption h5{
+    font-size: 1.25rem; /* Tamaño más pequeño para pantallas móviles */
+  }
+  .carousel-caption button {
+    font-size: 0.875rem; /* Botón más pequeño para pantallas móviles */
+    padding: 0.5rem 1rem; /* Aumentar el tamaño de botón para facilitar el clic */
+  }
+}
+
+
+/*Footer*/
+
+.footer-separator {
+  width: 100%;
+  border-top: 1px solid #fff;
+  margin-top: 20px;
+}
+.footer-separatorblog {
+  width: 100%;
+  border-top: 1px solid #fff;
+  margin-top: 120px;
+}
+footer {
+  padding: 20px 0;
+  background-color: #171212;
+  text-align: center;
+}
+.footer-icons a {
+  margin: 0 10px;
+  color: #fff;
+}
+.footer-links a {
+  margin: 0 15px;
+  color: #fff;
+  text-decoration: none;
+}
+@media (max-width: 768px) {
+  .footer-icons a {
+    margin: 0 5px;
+  }
+  .footer-links a {
+    display: block;
+    margin: 5px 0;
+  }
+}
+
+
+/* Estilos para prompts */
+.accordion-button {
+  background-color: #171212;
+  color: white;
+}
+
+.accordion-body {
+  background-color: #171212;
+  color: white;
+}
+
+.subitem {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  border-bottom: 1px solid #333;
+}
+
+.subitem:last-child {
+  border-bottom: none;
+}
+
+.copy-icon {
+  cursor: pointer;
+  color: white;
+}
+
+/*Figura blog*/
+img {
+    max-width: 100%;
+    height: auto;
+}
+figcaption {
+    font-size: 0.9em;
+    text-align: center;
+    margin-top: 5px;
+}
