@@ -65,7 +65,7 @@
   right: 20px;
   /* Ubicada a la derecha */
   width: 450px;
-  height: 450px;
+  height: 90%;
   background-color: #333;
   z-index: 1000;
   border-radius: 20px;
@@ -486,6 +486,12 @@ body {
   box-shadow: 6px 9px 4px rgb(58, 63, 223, 0.1);
   border-radius: 5px;
   overflow: hidden;
+  transition: transform 0.3s ease; /* Agregado para la transición suave */
+  cursor: pointer; /* Cambia el cursor al puntero para indicar que es clicable */
+}
+
+.course-card:hover {
+  transform: scale(1.09); /* Agranda la tarjeta al pasar el cursor */
 }
 
 .course-card img {
@@ -497,6 +503,16 @@ body {
 .course-card-content {
   padding: 1rem;
 }
+
+.course-card-content a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.course-card-content a:hover {
+  text-decoration: underline;
+}
+
 
 /* Media query para pantallas más pequeñas (tablets) */
 @media (max-width: 768px) {
