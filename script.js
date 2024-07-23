@@ -297,5 +297,5 @@ function copyToClipboard(content) {
 
 //Blog botones
 document.getElementById("leerMasBtn1").onclick = function() {
-    window.location.href = "blogs/blog1.html";
+    window.location.href = "blogs/blog1";
 };
