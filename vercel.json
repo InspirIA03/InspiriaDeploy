@@ -3,7 +3,7 @@
     {
       "source": "/about",
       "destination": "/about.html",
-      "permanent": true
+      "permanent": "true"
     },
     {
       "source": "/blog",
