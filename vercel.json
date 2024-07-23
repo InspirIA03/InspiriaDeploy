@@ -1,0 +1,31 @@
+{
+  "rewrites": [
+    {
+      "source": "/about",
+      "destination": "/about.html"
+    },
+    {
+      "source": "/blog",
+      "destination": "/blog.html"
+    },
+    {
+      "source": "/prompt",
+      "destination": "/prompt.html"
+    },
+    {
+      "source": "/blogs/blog1",
+      "destination": "/blogs/blog1.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "max-age=0, s-maxage=86400"
+        }
+      ]
+    }
+  ]
+}

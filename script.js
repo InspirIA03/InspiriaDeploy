@@ -13,7 +13,7 @@
     // Crear burbuja flotante
     var chatBubble = document.createElement('div');
     chatBubble.className = 'chat-bubble';
-    chatBubble.innerHTML = '<img src="images/logoRed.png" alt="Chat" loading="lazy">';
+    chatBubble.innerHTML = '<img src="../images/logoRed.png" alt="Chat" loading="lazy">';
     document.body.appendChild(chatBubble);
 
     // Crear contenedor de chat
@@ -22,12 +22,12 @@
     chatContainer.innerHTML = `
   <div class="chat-content-vertical">
       <div class="chat-header">
-          <img src="images/gpt.png" alt="Milan Logo" loading="lazy">
+          <img src="../images/gpt.png" alt="Milan Logo" loading="lazy">
           <button class="chat-close" id="chatClose">x</button>
       </div>
       <div class="chat-bot-info">
-          <img src="images/logoRed.png" alt="Yumbot" class="chat-bot-icon" loading="lazy">
-          <span class="chat-bot-title">   Hola, Soy Milan! Asistente de IA👋</span>  
+          <img src="../images/logoRed.png" alt="Yumbot" class="chat-bot-icon" loading="lazy">
+          <span class="chat-bot-title">   Hola, Soy Milan! Asistente de IA</span>  
       </div>
       <div class="chat-messages" id="chatMessages"></div>
       <div class="chat-input-container">
@@ -160,7 +160,7 @@
 
         // Agregar imagen para el asistente
         var img = document.createElement('img');
-        img.src = 'static/images/ai-bot-icon.png';
+        img.src = '../images/gpt.png';
         img.alt = 'Asistente';
         img.className = 'assistant-icon';
         typingIndicator.appendChild(img);
@@ -205,7 +205,7 @@
         if (sender !== 'Tú') {
             // Agregar imagen para el asistente
             var img = document.createElement('img');
-            img.src = 'images/gpt.png';
+            img.src = '../images/gpt.png';
             img.alt = 'Asistente';
             img.className = 'assistant-icon';
             messageElement.appendChild(img);
@@ -289,13 +289,13 @@ document.addEventListener("DOMContentLoaded", function() {
 //Acordeon
 function copyToClipboard(content) {
     navigator.clipboard.writeText(content).then(() => {
-      alert('Copied to clipboard');
+        alert('Copied to clipboard');
     }).catch(err => {
-      console.error('Failed to copy: ', err);
+        console.error('Failed to copy: ', err);
     });
-  }
+}
 
 //Blog botones
-document.getElementById("leerMasBtn1").onclick = function () {
-    window.location.href = "blog1.html"; 
+document.getElementById("leerMasBtn1").onclick = function() {
+    window.location.href = "blogs/blog1.html";
 };
