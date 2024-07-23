@@ -1,6 +1,6 @@
 (function() {
     var threadID = null;
-    var backendURL = "https://872a1cf9-2dbe-4587-a606-c6fb076e8f39-00-2a9oww9jj0ica.worf.replit.dev";
+    var backendURL = "https://backend-chat-inspiria.vercel.app";
     var typingIndicatorInterval = null;
     var apiKey = "inspiria_key"; // Añadir la clave API
 
