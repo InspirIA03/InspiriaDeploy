@@ -2,8 +2,7 @@
   "rewrites": [
     {
       "source": "/about",
-      "destination": "/about.html",
-      "permanent": "true"
+      "destination": "/about.html"
     },
     {
       "source": "/blog",
