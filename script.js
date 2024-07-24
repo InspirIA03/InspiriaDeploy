@@ -100,7 +100,7 @@
             .then(data => {
                 console.log("Datos obtenidos de /start:", data);
                 threadID = data.thread_id;
-                addMessageToChat('Asistente', '¿En qué te puedo servir? 😊');
+                addMessageToChat('Asistente', '¿Buscas alguna herramienta de IA o servicio en particular? 😊');
                 showChatInput();
             })
             .catch(error => {
@@ -112,7 +112,7 @@
     function resetChat() {
         // Reiniciar el chat al mensaje predeterminado de bienvenida
         chatMessages.innerHTML = '';
-        addMessageToChat('Asistente', '¿En qué te puedo servir? 😊');
+        addMessageToChat('Asistente', '¿Buscas alguna herramienta de IA o servicio en particular? 😊');
     }
 
     function sendMessage() {
