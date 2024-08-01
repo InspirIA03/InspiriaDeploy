@@ -27,7 +27,7 @@
       </div>
       <div class="chat-bot-info">
           <img src="../images/logoRed.png" alt="Yumbot" class="chat-bot-icon" loading="lazy">
-          <span class="chat-bot-title">   Hola,soy Turin tu asistente de IA!</span>  
+          <span class="chat-bot-title"></span>  
       </div>
       <div class="chat-messages" id="chatMessages"></div>
       <div class="chat-input-container">
@@ -100,7 +100,7 @@
             .then(data => {
                 console.log("Datos obtenidos de /start:", data);
                 threadID = data.thread_id;
-                addMessageToChat('Asistente', '¿Buscas alguna herramienta de IA o servicio en particular? 😊');
+                addMessageToChat('Asistente', ' Hola,soy Turin tu asistente de IA!¿Buscas alguna herramienta de IA o servicio en particular? 😊');
                 showChatInput();
             })
             .catch(error => {
