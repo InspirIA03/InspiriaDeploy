@@ -1,6 +1,0 @@
-User-agent: *
-Disallow: /admin/
-Disallow: /login/
-Disallow: /tmp/
-
-Sitemap: https://inspiria.vercel.app/sitemap.xml
