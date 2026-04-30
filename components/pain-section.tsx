@@ -77,7 +77,8 @@ export function PainSection() {
 
   return (
     <section 
-      ref={sectionRef} 
+      ref={sectionRef}
+      id="pain"
       className="relative py-32 md:py-48 pl-6 md:pl-28 pr-6 md:pr-12 overflow-hidden"
     >
       {/* Background accent line */}
