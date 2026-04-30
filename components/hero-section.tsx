@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import Image from "next/image"
 import { ScrambleTextOnHover } from "@/components/scramble-text"
 import { SplitFlapText, SplitFlapMuteToggle, SplitFlapAudioProvider } from "@/components/split-flap-text"
 import { AnimatedNoise } from "@/components/animated-noise"
@@ -10,6 +9,110 @@ import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 gsap.registerPlugin(ScrollTrigger)
+
+function HeroAnimation() {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const barsRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!containerRef.current || !barsRef.current) return
+
+    const bars = barsRef.current.querySelectorAll(".growth-bar")
+    const numbers = containerRef.current.querySelectorAll(".counter-number")
+
+    const ctx = gsap.context(() => {
+      // Animate bars growing
+      gsap.fromTo(
+        bars,
+        { scaleY: 0.1 },
+        {
+          scaleY: 1,
+          duration: 2,
+          stagger: 0.15,
+          ease: "power2.out",
+          repeat: -1,
+          repeatDelay: 1.5,
+          yoyo: true,
+        }
+      )
+
+      // Animate numbers counting
+      numbers.forEach((num, i) => {
+        const target = [1, 2, 3, 4, 5][i] * 1000
+        gsap.to({ val: 0 }, {
+          val: target,
+          duration: 2.5,
+          delay: i * 0.2,
+          repeat: -1,
+          repeatDelay: 2,
+          ease: "power1.inOut",
+          onUpdate: function() {
+            num.textContent = "$" + Math.floor(this.targets()[0].val).toLocaleString()
+          }
+        })
+      })
+
+      // Pulse effect on the frame
+      gsap.to(containerRef.current?.querySelector(".pulse-ring"), {
+        scale: 1.1,
+        opacity: 0,
+        duration: 2,
+        repeat: -1,
+        ease: "power1.out"
+      })
+    }, containerRef)
+
+    return () => ctx.revert()
+  }, [])
+
+  return (
+    <div 
+      ref={containerRef}
+      className="hidden md:flex absolute bottom-20 right-8 lg:bottom-24 lg:right-16 xl:right-24 flex-col items-end gap-6"
+    >
+      {/* Decorative frame with pulse */}
+      <div className="relative">
+        <div className="pulse-ring absolute -inset-4 border border-accent/40 rounded-sm" />
+        <div className="absolute -inset-2 border border-accent/20" />
+        
+        {/* Growth bars visualization */}
+        <div ref={barsRef} className="flex items-end gap-2 p-6 bg-background/50 backdrop-blur-sm border border-border/50">
+          {[0.4, 0.6, 0.5, 0.8, 1].map((height, i) => (
+            <div
+              key={i}
+              className="growth-bar w-3 lg:w-4 bg-accent/80 origin-bottom"
+              style={{ height: `${height * 80}px` }}
+            />
+          ))}
+        </div>
+
+        {/* Corner accents */}
+        <div className="absolute -top-1 -left-1 w-3 h-3 border-t border-l border-accent" />
+        <div className="absolute -bottom-1 -right-1 w-3 h-3 border-b border-r border-accent" />
+      </div>
+
+      {/* Animated counter */}
+      <div className="flex flex-col items-end gap-1">
+        <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+          Potencial mensual
+        </span>
+        <div className="flex gap-3">
+          {[0, 1, 2, 3, 4].map((i) => (
+            <span
+              key={i}
+              className="counter-number font-[var(--font-bebas)] text-lg lg:text-xl text-accent tabular-nums"
+            >
+              $0
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* Decorative line */}
+      <div className="w-24 h-px bg-gradient-to-r from-transparent via-accent/60 to-transparent" />
+    </div>
+  )
+}
 
 export function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -81,31 +184,8 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* Floating hero image */}
-      <div className="hidden md:block absolute bottom-16 right-8 lg:bottom-20 lg:right-16 xl:right-24">
-        <div className="relative animate-float">
-          {/* Decorative frame */}
-          <div className="absolute -inset-3 border border-accent/30" />
-          <div className="absolute -inset-6 border border-accent/10" />
-          
-          {/* Image container */}
-          <div className="relative w-48 lg:w-64 xl:w-72 aspect-[3/4] overflow-hidden">
-            <Image
-              src="/images/hero-person.jpg"
-              alt="Emprendedor digital trabajando"
-              fill
-              className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
-              priority
-            />
-            {/* Purple overlay */}
-            <div className="absolute inset-0 bg-accent/10 mix-blend-overlay" />
-          </div>
-          
-          {/* Corner accents */}
-          <div className="absolute -top-1 -left-1 w-4 h-4 border-t border-l border-accent" />
-          <div className="absolute -bottom-1 -right-1 w-4 h-4 border-b border-r border-accent" />
-        </div>
-      </div>
+      {/* Animated growth visualization */}
+      <HeroAnimation />
 
       {/* Floating info tag */}
       <div className="absolute bottom-8 left-6 md:left-28">
