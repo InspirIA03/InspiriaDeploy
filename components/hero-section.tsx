@@ -12,53 +12,73 @@ gsap.registerPlugin(ScrollTrigger)
 
 function HeroAnimation() {
   const containerRef = useRef<HTMLDivElement>(null)
-  const barsRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (!containerRef.current || !barsRef.current) return
+    if (!containerRef.current) return
 
-    const bars = barsRef.current.querySelectorAll(".growth-bar")
-    const numbers = containerRef.current.querySelectorAll(".counter-number")
+    const nodes = containerRef.current.querySelectorAll(".node")
+    const lines = containerRef.current.querySelectorAll(".connection-line")
+    const centerNode = containerRef.current.querySelector(".center-node")
+    const orbitNodes = containerRef.current.querySelectorAll(".orbit-node")
 
     const ctx = gsap.context(() => {
-      // Animate bars growing
+      // Nodes pulse in sequence
       gsap.fromTo(
-        bars,
-        { scaleY: 0.1 },
+        nodes,
+        { scale: 0.8, opacity: 0.3 },
         {
-          scaleY: 1,
-          duration: 2,
-          stagger: 0.15,
-          ease: "power2.out",
+          scale: 1,
+          opacity: 1,
+          duration: 1.5,
+          stagger: 0.3,
+          ease: "power2.inOut",
           repeat: -1,
-          repeatDelay: 1.5,
           yoyo: true,
         }
       )
 
-      // Animate numbers counting
-      numbers.forEach((num, i) => {
-        const target = [1, 2, 3, 4, 5][i] * 1000
-        gsap.to({ val: 0 }, {
-          val: target,
-          duration: 2.5,
-          delay: i * 0.2,
-          repeat: -1,
-          repeatDelay: 2,
+      // Lines draw and fade
+      gsap.fromTo(
+        lines,
+        { strokeDashoffset: 100, opacity: 0 },
+        {
+          strokeDashoffset: 0,
+          opacity: 0.6,
+          duration: 2,
+          stagger: 0.2,
           ease: "power1.inOut",
-          onUpdate: function() {
-            num.textContent = "$" + Math.floor(this.targets()[0].val).toLocaleString()
-          }
-        })
+          repeat: -1,
+          yoyo: true,
+        }
+      )
+
+      // Center node pulses
+      gsap.to(centerNode, {
+        scale: 1.2,
+        duration: 2,
+        ease: "power1.inOut",
+        repeat: -1,
+        yoyo: true,
       })
 
-      // Pulse effect on the frame
-      gsap.to(containerRef.current?.querySelector(".pulse-ring"), {
-        scale: 1.1,
-        opacity: 0,
-        duration: 2,
-        repeat: -1,
-        ease: "power1.out"
+      // Orbit nodes rotate around center
+      orbitNodes.forEach((node, i) => {
+        const angle = (i * 72) * (Math.PI / 180) // 5 nodes, 72 degrees apart
+        const radius = 60
+        
+        gsap.to(node, {
+          motionPath: {
+            path: [
+              { x: Math.cos(angle) * radius, y: Math.sin(angle) * radius },
+              { x: Math.cos(angle + Math.PI) * radius, y: Math.sin(angle + Math.PI) * radius },
+              { x: Math.cos(angle) * radius, y: Math.sin(angle) * radius },
+            ],
+            curviness: 1.5,
+          },
+          duration: 8 + i,
+          repeat: -1,
+          ease: "none",
+        })
       })
     }, containerRef)
 
@@ -68,48 +88,80 @@ function HeroAnimation() {
   return (
     <div 
       ref={containerRef}
-      className="hidden md:flex absolute bottom-20 right-8 lg:bottom-24 lg:right-16 xl:right-24 flex-col items-end gap-6"
+      className="hidden md:flex absolute bottom-16 right-8 lg:bottom-20 lg:right-16 xl:right-24"
     >
-      {/* Decorative frame with pulse */}
-      <div className="relative">
-        <div className="pulse-ring absolute -inset-4 border border-accent/40 rounded-sm" />
-        <div className="absolute -inset-2 border border-accent/20" />
-        
-        {/* Growth bars visualization */}
-        <div ref={barsRef} className="flex items-end gap-2 p-6 bg-background/50 backdrop-blur-sm border border-border/50">
-          {[0.4, 0.6, 0.5, 0.8, 1].map((height, i) => (
+      <div className="relative w-48 h-48 lg:w-56 lg:h-56">
+        {/* SVG connections */}
+        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 200">
+          {/* Connection lines from center to orbit */}
+          {[0, 1, 2, 3, 4].map((i) => {
+            const angle = (i * 72 - 90) * (Math.PI / 180)
+            const x2 = 100 + Math.cos(angle) * 60
+            const y2 = 100 + Math.sin(angle) * 60
+            return (
+              <line
+                key={i}
+                className="connection-line stroke-accent"
+                x1="100"
+                y1="100"
+                x2={x2}
+                y2={y2}
+                strokeWidth="1"
+                strokeDasharray="100"
+                fill="none"
+              />
+            )
+          })}
+          
+          {/* Outer ring */}
+          <circle
+            cx="100"
+            cy="100"
+            r="70"
+            className="stroke-accent/20"
+            strokeWidth="1"
+            fill="none"
+          />
+          <circle
+            cx="100"
+            cy="100"
+            r="85"
+            className="stroke-border/30"
+            strokeWidth="1"
+            strokeDasharray="4 4"
+            fill="none"
+          />
+        </svg>
+
+        {/* Center node - represents knowledge transforming */}
+        <div className="center-node absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 lg:w-10 lg:h-10">
+          <div className="absolute inset-0 border-2 border-accent rotate-45" />
+          <div className="absolute inset-1 bg-accent/20" />
+        </div>
+
+        {/* Orbit nodes - represent digital products/outcomes */}
+        {[0, 1, 2, 3, 4].map((i) => {
+          const angle = (i * 72 - 90) * (Math.PI / 180)
+          const x = 50 + Math.cos(angle) * 30 // percentage
+          const y = 50 + Math.sin(angle) * 30
+          return (
             <div
               key={i}
-              className="growth-bar w-3 lg:w-4 bg-accent/80 origin-bottom"
-              style={{ height: `${height * 80}px` }}
-            />
-          ))}
-        </div>
-
-        {/* Corner accents */}
-        <div className="absolute -top-1 -left-1 w-3 h-3 border-t border-l border-accent" />
-        <div className="absolute -bottom-1 -right-1 w-3 h-3 border-b border-r border-accent" />
-      </div>
-
-      {/* Animated counter */}
-      <div className="flex flex-col items-end gap-1">
-        <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-          Potencial mensual
-        </span>
-        <div className="flex gap-3">
-          {[0, 1, 2, 3, 4].map((i) => (
-            <span
-              key={i}
-              className="counter-number font-[var(--font-bebas)] text-lg lg:text-xl text-accent tabular-nums"
+              className="orbit-node node absolute w-3 h-3 lg:w-4 lg:h-4"
+              style={{ top: `${y}%`, left: `${x}%`, transform: 'translate(-50%, -50%)' }}
             >
-              $0
-            </span>
-          ))}
+              <div className="w-full h-full border border-accent/60 bg-accent/10" />
+            </div>
+          )
+        })}
+
+        {/* Label */}
+        <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap">
+          <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground/60">
+            Conocimiento → Producto
+          </span>
         </div>
       </div>
-
-      {/* Decorative line */}
-      <div className="w-24 h-px bg-gradient-to-r from-transparent via-accent/60 to-transparent" />
     </div>
   )
 }
