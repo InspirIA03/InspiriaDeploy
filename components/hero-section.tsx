@@ -219,32 +219,19 @@ export function HeroSection() {
           Convierte tu conocimiento en un producto digital y genera tus primeros $1,000 a $5,000 con una plataforma diseñada para ayudarte a monetizarlo.
         </p>
 
-        <div className="mt-16 flex items-center gap-8">
+        <div className="mt-16">
           <a
-            href="#work"
+            href="#apply"
             className="group inline-flex items-center gap-3 border border-foreground/20 px-6 py-3 font-mono text-xs uppercase tracking-widest text-foreground hover:border-accent hover:text-accent transition-all duration-200"
           >
-            <ScrambleTextOnHover text="View Experiments" as="span" duration={0.6} />
+            <ScrambleTextOnHover text="Aplicar Ahora" as="span" duration={0.6} />
             <BitmapChevron className="transition-transform duration-[400ms] ease-in-out group-hover:rotate-45" />
-          </a>
-          <a
-            href="#signals"
-            className="font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors duration-200"
-          >
-            Latest Signals
           </a>
         </div>
       </div>
 
       {/* Animated growth visualization */}
       <HeroAnimation />
-
-      {/* Floating info tag */}
-      <div className="absolute bottom-8 left-6 md:left-28">
-        <div className="border border-border px-4 py-2 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-          v.01 / Experimental Build
-        </div>
-      </div>
     </section>
   )
 }
