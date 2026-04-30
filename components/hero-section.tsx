@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef } from "react"
+import Image from "next/image"
 import { ScrambleTextOnHover } from "@/components/scramble-text"
 import { SplitFlapText, SplitFlapMuteToggle, SplitFlapAudioProvider } from "@/components/split-flap-text"
 import { AnimatedNoise } from "@/components/animated-noise"
@@ -80,8 +81,34 @@ export function HeroSection() {
         </div>
       </div>
 
+      {/* Floating hero image */}
+      <div className="hidden md:block absolute bottom-16 right-8 lg:bottom-20 lg:right-16 xl:right-24">
+        <div className="relative animate-float">
+          {/* Decorative frame */}
+          <div className="absolute -inset-3 border border-accent/30" />
+          <div className="absolute -inset-6 border border-accent/10" />
+          
+          {/* Image container */}
+          <div className="relative w-48 lg:w-64 xl:w-72 aspect-[3/4] overflow-hidden">
+            <Image
+              src="/images/hero-person.jpg"
+              alt="Emprendedor digital trabajando"
+              fill
+              className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
+              priority
+            />
+            {/* Purple overlay */}
+            <div className="absolute inset-0 bg-accent/10 mix-blend-overlay" />
+          </div>
+          
+          {/* Corner accents */}
+          <div className="absolute -top-1 -left-1 w-4 h-4 border-t border-l border-accent" />
+          <div className="absolute -bottom-1 -right-1 w-4 h-4 border-b border-r border-accent" />
+        </div>
+      </div>
+
       {/* Floating info tag */}
-      <div className="absolute bottom-8 right-8 md:bottom-12 md:right-12">
+      <div className="absolute bottom-8 left-6 md:left-28">
         <div className="border border-border px-4 py-2 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
           v.01 / Experimental Build
         </div>
