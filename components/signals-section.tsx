@@ -91,7 +91,7 @@ export function SignalsSection() {
     const track = trackRef.current
     const cards = track.querySelectorAll(".beneficio-card")
     const cardWidth = 320 + 32 // card width + gap
-    const totalWidth = cardWidth * beneficios.length
+    const totalWidth = cardWidth * beneficiosData.length
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ repeat: -1 })
