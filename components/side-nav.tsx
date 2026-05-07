@@ -2,18 +2,20 @@
 
 import { useState, useEffect } from "react"
 import { cn } from "@/lib/utils"
+import { useLanguage } from "@/lib/language-context"
 
 const navItems = [
-  { id: "hero", label: "Inicio", number: "00" },
-  { id: "work", label: "Para Ti", number: "01" },
-  { id: "pain", label: "El Problema", number: "02" },
-  { id: "principles", label: "Proceso", number: "03" },
-  { id: "signals", label: "Beneficios", number: "04" },
-  { id: "apply", label: "Aplicar", number: "05" },
+  { id: "hero", labelKey: "nav.inicio", number: "00" },
+  { id: "work", labelKey: "nav.parati", number: "01" },
+  { id: "pain", labelKey: "nav.problema", number: "02" },
+  { id: "principles", labelKey: "nav.proceso", number: "03" },
+  { id: "signals", labelKey: "nav.beneficios", number: "04" },
+  { id: "apply", labelKey: "nav.aplicar", number: "05" },
 ]
 
 export function SideNav() {
   const [activeSection, setActiveSection] = useState("hero")
+  const { t } = useLanguage()
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -47,7 +49,7 @@ export function SideNav() {
       {/* Desktop nav - left side */}
       <nav className="fixed left-0 top-0 z-50 h-screen w-16 md:w-20 hidden md:flex flex-col justify-center border-r border-border/30 bg-background/80 backdrop-blur-sm">
         <div className="flex flex-col gap-6 px-4">
-          {navItems.map(({ id, label, number }) => (
+          {navItems.map(({ id, labelKey, number }) => (
             <button key={id} onClick={() => scrollToSection(id)} className="group relative flex items-center gap-3">
               <span
                 className={cn(
@@ -61,7 +63,7 @@ export function SideNav() {
                   activeSection === id ? "text-accent" : "text-muted-foreground",
                 )}
               >
-                {number} / {label}
+                {number} / {t(labelKey)}
               </span>
             </button>
           ))}
@@ -71,7 +73,7 @@ export function SideNav() {
       {/* Mobile nav - bottom fixed */}
       <nav className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-background/90 backdrop-blur-md border-t border-border/30">
         <div className="flex items-center justify-around py-3 px-2">
-          {navItems.map(({ id, label, number }) => (
+          {navItems.map(({ id, labelKey, number }) => (
             <button
               key={id}
               onClick={() => scrollToSection(id)}

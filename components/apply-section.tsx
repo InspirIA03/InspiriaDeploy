@@ -1,6 +1,7 @@
 "use client"
 
 import { useRef, useEffect } from "react"
+import { useLanguage } from "@/lib/language-context"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import Script from "next/script"
@@ -8,6 +9,7 @@ import Script from "next/script"
 gsap.registerPlugin(ScrollTrigger)
 
 export function ApplySection() {
+  const { t } = useLanguage()
   const sectionRef = useRef<HTMLElement>(null)
   const headerRef = useRef<HTMLDivElement>(null)
   const formRef = useRef<HTMLDivElement>(null)
@@ -95,9 +97,6 @@ export function ApplySection() {
     return () => ctx.revert()
   }, [])
 
-  const titleText = "Si tienes conocimiento valioso y quieres convertirlo en un activo digital rentable"
-  const subtitleText = "Este es tu punto de partida. Buscamos socios reales."
-
   return (
     <section
       ref={sectionRef}
@@ -109,7 +108,7 @@ export function ApplySection() {
 
       {/* Section number */}
       <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent mb-8 block">
-        05 / Aplicar
+        {t("apply.section")}
       </span>
 
       {/* Header */}
@@ -128,9 +127,9 @@ export function ApplySection() {
 
         {/* Main title */}
         <h2 className="font-[var(--font-bebas)] text-4xl md:text-5xl lg:text-6xl tracking-tight leading-tight mb-6">
-          {titleText.split(" ").map((word, index) => (
+          {t("apply.title").split(" ").map((word, index) => (
             <span key={index} className="title-word inline-block mr-[0.3em]">
-              {word === "conocimiento" || word === "activo" || word === "rentable" ? (
+              {["conocimiento", "knowledge", "activo", "asset", "rentable", "profitable"].includes(word.toLowerCase()) ? (
                 <span className="text-accent">{word}</span>
               ) : (
                 word
@@ -141,9 +140,9 @@ export function ApplySection() {
 
         {/* Subtitle */}
         <p className="font-mono text-sm md:text-base text-muted-foreground max-w-xl mx-auto">
-          {subtitleText.split(" ").map((word, index) => (
+          {t("apply.subtitle").split(" ").map((word, index) => (
             <span key={index} className="title-word inline-block mr-[0.3em]">
-              {word === "socios" || word === "reales." ? (
+              {["socios", "partners", "reales", "reales.", "real"].includes(word.toLowerCase()) ? (
                 <span className="text-accent">{word}</span>
               ) : (
                 word

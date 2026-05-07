@@ -2,12 +2,14 @@
 
 import { useRef, useEffect } from "react"
 import { HighlightText } from "@/components/highlight-text"
+import { useLanguage } from "@/lib/language-context"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 gsap.registerPlugin(ScrollTrigger)
 
 export function PainSection() {
+  const { t, language } = useLanguage()
   const sectionRef = useRef<HTMLElement>(null)
   const painRef = useRef<HTMLDivElement>(null)
   const opportunityRef = useRef<HTMLDivElement>(null)
@@ -72,8 +74,13 @@ export function PainSection() {
     return () => ctx.revert()
   }, [])
 
-  const painTitle = "Tener conocimiento no es el problema."
-  const highlightTitle = "Convertirlo en ingresos sí."
+  const painWords = language === "es" 
+    ? ["Tener", "conocimiento", "no", "es", "el", "problema."]
+    : ["Having", "knowledge", "is", "not", "the", "problem."]
+  
+  const highlightWords = language === "es"
+    ? ["Convertirlo", "en", "ingresos", "sí."]
+    : ["Turning", "it", "into", "income", "is."]
 
   return (
     <section 
@@ -93,11 +100,11 @@ export function PainSection() {
         {/* Pain statement */}
         <div ref={painRef} className="text-center mb-16 md:mb-24">
           <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent mb-8 block">
-            02 / El Problema
+            {t("pain.section")}
           </span>
           
           <h2 className="font-[var(--font-bebas)] text-4xl md:text-6xl lg:text-8xl tracking-tight leading-[1.1]">
-            {painTitle.split(" ").map((word, i) => (
+            {painWords.map((word, i) => (
               <span key={i} className="pain-word inline-block mr-[0.25em]">
                 {word}
               </span>
@@ -105,7 +112,7 @@ export function PainSection() {
           </h2>
           
           <h2 className="font-[var(--font-bebas)] text-4xl md:text-6xl lg:text-8xl tracking-tight leading-[1.1] mt-2">
-            {highlightTitle.split(" ").map((word, i) => (
+            {highlightWords.map((word, i) => (
               <span key={i} className="pain-word inline-block mr-[0.25em]">
                 <HighlightText parallaxSpeed={0.4}>{word}</HighlightText>
               </span>
@@ -121,13 +128,8 @@ export function PainSection() {
               <div className="hidden md:block w-8 h-24 border-l-2 border-t-2 border-b-2 border-accent/40" />
               
               <div className="flex-1">
-                <p className="font-mono text-sm md:text-base text-muted-foreground leading-relaxed mb-6">
-                  Muchos saben mucho, pero no tienen estructura, oferta ni sistema para monetizarlo.
-                </p>
-                
                 <p className="font-sans text-lg md:text-xl lg:text-2xl text-foreground/90 leading-relaxed">
-                  Aquí ayudamos a convertir ese conocimiento en un{" "}
-                  <span className="text-accent font-medium">producto digital escalable</span>.
+                  {t("pain.description")}
                 </p>
               </div>
               

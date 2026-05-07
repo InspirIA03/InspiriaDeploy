@@ -2,6 +2,7 @@
 
 import { useRef, useEffect } from "react"
 import { HighlightText } from "@/components/highlight-text"
+import { useLanguage } from "@/lib/language-context"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
@@ -11,41 +12,31 @@ export function PrinciplesSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const headerRef = useRef<HTMLDivElement>(null)
   const principlesRef = useRef<HTMLDivElement>(null)
+  const { t } = useLanguage()
 
   const principles = [
     {
       number: "01",
-      titleParts: [
-        { text: "APLICAS", highlight: true },
-      ],
-      description: "Completa tu aplicación y cuéntanos sobre tu conocimiento y experiencia.",
+      titleKey: "principles.step1.title",
+      descKey: "principles.step1.desc",
       align: "left",
     },
     {
       number: "02",
-      titleParts: [
-        { text: "REVISAMOS ", highlight: false },
-        { text: "TU PERFIL", highlight: true },
-      ],
-      description: "Analizamos tu aplicación para asegurarnos de que eres un buen fit para el programa.",
+      titleKey: "principles.step2.title",
+      descKey: "principles.step2.desc",
       align: "right",
     },
     {
       number: "03",
-      titleParts: [
-        { text: "ACCEDES A LA ", highlight: false },
-        { text: "PLATAFORMA", highlight: true },
-      ],
-      description: "Si calificas, obtienes acceso inmediato a todos los recursos y herramientas.",
+      titleKey: "principles.step3.title",
+      descKey: "principles.step3.desc",
       align: "left",
     },
     {
       number: "04",
-      titleParts: [
-        { text: "CONSTRUIMOS ", highlight: true },
-        { text: "TU OFERTA", highlight: false },
-      ],
-      description: "Juntos creamos tu producto digital y activamos el sistema de monetización.",
+      titleKey: "principles.step4.title",
+      descKey: "principles.step4.desc",
       align: "right",
     },
   ]
@@ -92,8 +83,8 @@ export function PrinciplesSection() {
     <section ref={sectionRef} id="principles" className="relative py-32 pl-6 md:pl-28 pr-6 md:pr-12">
       {/* Section header */}
       <div ref={headerRef} className="mb-24">
-        <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">03 / Proceso</span>
-        <h2 className="mt-4 font-[var(--font-bebas)] text-5xl md:text-7xl tracking-tight">CÓMO FUNCIONA</h2>
+        <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">{t("principles.section")}</span>
+        <h2 className="mt-4 font-[var(--font-bebas)] text-5xl md:text-7xl tracking-tight">{t("principles.title")}</h2>
       </div>
 
       {/* Staggered principles */}
@@ -107,24 +98,18 @@ export function PrinciplesSection() {
           >
             {/* Annotation label */}
             <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground mb-4">
-              {principle.number} / {principle.titleParts[0].text.split(" ")[0]}
+              {principle.number}
             </span>
 
             <h3 className="font-[var(--font-bebas)] text-4xl md:text-6xl lg:text-8xl tracking-tight leading-none">
-              {principle.titleParts.map((part, i) =>
-                part.highlight ? (
-                  <HighlightText key={i} parallaxSpeed={0.6}>
-                    {part.text}
-                  </HighlightText>
-                ) : (
-                  <span key={i}>{part.text}</span>
-                ),
-              )}
+              <HighlightText parallaxSpeed={0.6}>
+                {t(principle.titleKey)}
+              </HighlightText>
             </h3>
 
             {/* Description */}
             <p className="mt-6 max-w-md font-mono text-sm text-muted-foreground leading-relaxed">
-              {principle.description}
+              {t(principle.descKey)}
             </p>
 
             {/* Decorative line */}

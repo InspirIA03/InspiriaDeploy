@@ -2,37 +2,18 @@
 
 import { useRef, useState, useEffect } from "react"
 import { cn } from "@/lib/utils"
+import { useLanguage } from "@/lib/language-context"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 gsap.registerPlugin(ScrollTrigger)
 
-const beneficios = [
-  {
-    icon: "01",
-    title: "Estructura para Monetizar",
-    note: "Un sistema probado para convertir tu conocimiento en un producto digital rentable.",
-  },
-  {
-    icon: "02",
-    title: "Plataforma Propia",
-    note: "Acceso completo a una plataforma diseñada para tu negocio digital.",
-  },
-  {
-    icon: "03",
-    title: "Curso y Acompañamiento",
-    note: "Formación paso a paso con soporte y mentoría personalizada.",
-  },
-  {
-    icon: "04",
-    title: "Sistema de Automatización",
-    note: "Herramientas de automatización y ventas para escalar tu negocio.",
-  },
-  {
-    icon: "05",
-    title: "Revenue Share",
-    note: "Modelo de colaboración donde crecemos juntos con participación en ingresos.",
-  },
+const beneficiosData = [
+  { icon: "01", titleKey: "signals.item1.title", noteKey: "signals.item1.desc" },
+  { icon: "02", titleKey: "signals.item2.title", noteKey: "signals.item2.desc" },
+  { icon: "03", titleKey: "signals.item3.title", noteKey: "signals.item3.desc" },
+  { icon: "04", titleKey: "signals.item4.title", noteKey: "signals.item4.desc" },
+  { icon: "05", titleKey: "signals.item5.title", noteKey: "signals.item5.desc" },
 ]
 
 export function SignalsSection() {
@@ -42,6 +23,7 @@ export function SignalsSection() {
   const cursorRef = useRef<HTMLDivElement>(null)
   const [isHovering, setIsHovering] = useState(false)
   const [isPaused, setIsPaused] = useState(false)
+  const { t } = useLanguage()
 
   // Cursor effect
   useEffect(() => {
@@ -156,8 +138,8 @@ export function SignalsSection() {
 
       {/* Section header */}
       <div ref={headerRef} className="mb-16 pr-6 md:pr-12">
-        <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">04 / Beneficios</span>
-        <h2 className="mt-4 font-[var(--font-bebas)] text-5xl md:text-7xl tracking-tight">QUÉ OBTIENES SI ERES SELECCIONADO</h2>
+        <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">{t("signals.section")}</span>
+        <h2 className="mt-4 font-[var(--font-bebas)] text-5xl md:text-7xl tracking-tight">{t("signals.title")}</h2>
       </div>
 
       {/* Infinite scroll container */}
@@ -167,12 +149,12 @@ export function SignalsSection() {
           className="flex gap-8 pb-8"
         >
           {/* Original cards */}
-          {beneficios.map((beneficio, index) => (
-            <BeneficioCard key={`original-${index}`} beneficio={beneficio} index={index} />
+          {beneficiosData.map((beneficio, index) => (
+            <BeneficioCard key={`original-${index}`} beneficio={beneficio} index={index} t={t} />
           ))}
           {/* Duplicated cards for seamless loop */}
-          {beneficios.map((beneficio, index) => (
-            <BeneficioCard key={`duplicate-${index}`} beneficio={beneficio} index={index} />
+          {beneficiosData.map((beneficio, index) => (
+            <BeneficioCard key={`duplicate-${index}`} beneficio={beneficio} index={index} t={t} />
           ))}
         </div>
       </div>
@@ -183,9 +165,11 @@ export function SignalsSection() {
 function BeneficioCard({
   beneficio,
   index,
+  t,
 }: {
-  beneficio: { icon: string; title: string; note: string }
+  beneficio: { icon: string; titleKey: string; noteKey: string }
   index: number
+  t: (key: string) => string
 }) {
   return (
     <article
@@ -209,14 +193,14 @@ function BeneficioCard({
 
         {/* Title */}
         <h3 className="font-[var(--font-bebas)] text-3xl md:text-4xl tracking-tight mb-4 group-hover:text-accent transition-colors duration-300">
-          {beneficio.title}
+          {t(beneficio.titleKey)}
         </h3>
 
         {/* Divider line */}
         <div className="w-12 h-px bg-accent/60 mb-4 md:mb-6 group-hover:w-full transition-all duration-500" />
 
         {/* Description */}
-        <p className="font-mono text-xs text-muted-foreground leading-relaxed">{beneficio.note}</p>
+        <p className="font-mono text-xs text-muted-foreground leading-relaxed">{t(beneficio.noteKey)}</p>
 
         {/* Bottom right corner fold effect */}
         <div className="absolute bottom-0 right-0 w-6 h-6 overflow-hidden">

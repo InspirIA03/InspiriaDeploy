@@ -2,35 +2,36 @@
 
 import { useState, useRef, useEffect } from "react"
 import { cn } from "@/lib/utils"
+import { useLanguage } from "@/lib/language-context"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Check } from "lucide-react"
 
 gsap.registerPlugin(ScrollTrigger)
 
-const criterios = [
+const criteriosData = [
   {
-    title: "Conocimiento Valioso",
-    medium: "Expertise",
-    description: "Tienes conocimiento valioso en un tema que otros quieren aprender.",
+    titleKey: "work.item1.title",
+    mediumKey: "Expertise",
+    descKey: "work.item1.desc",
     span: "col-span-2 row-span-2",
   },
   {
-    title: "Ingresos Extra",
-    medium: "Monetización",
-    description: "Quieres crear ingresos extra o reemplazar tu ingreso actual.",
+    titleKey: "work.item2.title",
+    mediumKey: "Monetización",
+    descKey: "work.item2.desc",
     span: "col-span-1 row-span-1",
   },
   {
-    title: "Algo Propio",
-    medium: "Emprendimiento",
-    description: "Quieres construir algo propio, un negocio que sea tuyo.",
+    titleKey: "work.item3.title",
+    mediumKey: "Emprendimiento",
+    descKey: "work.item3.desc",
     span: "col-span-1 row-span-2",
   },
   {
-    title: "Ejecutar",
-    medium: "Acción",
-    description: "Estás dispuesto a ejecutar y tomar acción para lograr tus metas.",
+    titleKey: "work.item4.title",
+    mediumKey: "Acción",
+    descKey: "work.item4.desc",
     span: "col-span-2 row-span-1",
   },
 ]
@@ -39,6 +40,7 @@ export function WorkSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const headerRef = useRef<HTMLDivElement>(null)
   const gridRef = useRef<HTMLDivElement>(null)
+  const { t } = useLanguage()
 
   useEffect(() => {
     if (!sectionRef.current || !headerRef.current || !gridRef.current) return
@@ -87,12 +89,9 @@ export function WorkSection() {
       {/* Section header */}
       <div ref={headerRef} className="mb-16 flex items-end justify-between">
         <div>
-          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">01 / Para Ti</span>
-          <h2 className="mt-4 font-[var(--font-bebas)] text-5xl md:text-7xl tracking-tight">ESTO ES PARA TI SI...</h2>
+          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">{t("work.section")}</span>
+          <h2 className="mt-4 font-[var(--font-bebas)] text-5xl md:text-7xl tracking-tight">{t("work.title")}</h2>
         </div>
-        <p className="hidden md:block max-w-xs font-mono text-xs text-muted-foreground text-right leading-relaxed">
-          Identifica si este programa es para ti y tu situación actual.
-        </p>
       </div>
 
       {/* Asymmetric grid */}
@@ -100,8 +99,8 @@ export function WorkSection() {
         ref={gridRef}
         className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 auto-rows-[180px] md:auto-rows-[200px]"
       >
-        {criterios.map((criterio, index) => (
-          <CriterioCard key={index} criterio={criterio} index={index} persistHover={index === 0} />
+        {criteriosData.map((criterio, index) => (
+          <CriterioCard key={index} criterio={criterio} index={index} persistHover={index === 0} t={t} />
         ))}
       </div>
     </section>
@@ -112,15 +111,17 @@ function CriterioCard({
   criterio,
   index,
   persistHover = false,
+  t,
 }: {
   criterio: {
-    title: string
-    medium: string
-    description: string
+    titleKey: string
+    mediumKey: string
+    descKey: string
     span: string
   }
   index: number
   persistHover?: boolean
+  t: (key: string) => string
 }) {
   const [isHovered, setIsHovered] = useState(false)
   const cardRef = useRef<HTMLElement>(null)
@@ -164,7 +165,7 @@ function CriterioCard({
       {/* Content */}
       <div className="relative z-10">
         <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-          {criterio.medium}
+          {criterio.mediumKey}
         </span>
         <h3
           className={cn(
@@ -172,7 +173,7 @@ function CriterioCard({
             isActive ? "text-accent" : "text-foreground",
           )}
         >
-          {criterio.title}
+          {t(criterio.titleKey)}
         </h3>
       </div>
 
@@ -184,7 +185,7 @@ function CriterioCard({
             isActive ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2",
           )}
         >
-          {criterio.description}
+          {t(criterio.descKey)}
         </p>
       </div>
 
