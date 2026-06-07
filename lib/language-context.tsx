@@ -23,6 +23,7 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.inicio": "Inicio",
     "nav.parati": "Para Ti",
     "nav.problema": "El Problema",
+    "nav.solucion": "La Solución",
     "nav.proceso": "Proceso",
     "nav.beneficios": "Beneficios",
     "nav.aplicar": "Aplicar",
@@ -53,9 +54,27 @@ const translations: Record<Language, Record<string, string>> = {
     "pain.point.5": "Tu equipo trabaja en demasiadas plataformas al mismo tiempo.",
     "pain.point.6": "Cada nuevo lanzamiento te obliga a empezar casi desde cero.",
     "pain.point.7": "No eres dueño ni tienes control sobre los datos de tus clientes.",
+
+    // Infrastructure Section
+    "infra.section": "03 / La Solución",
+    "infra.title.1": "La nueva",
+    "infra.title.2": "infraestructura",
+    "infra.title.3": "para negocios digitales modernos",
+    "infra.intro": "Hoy la mayoría de negocios digitales está fragmentada.",
+    "infra.fragmented.label": "Fragmentado",
+    "infra.unified.label": "Unificado",
+    "infra.toggle.hint": "Activa para unificar",
+    "infra.node.courses": "Cursos",
+    "infra.node.crm": "CRM",
+    "infra.node.automation": "Automatización",
+    "infra.node.payments": "Pagos",
+    "infra.node.marketing": "Marketing",
+    "infra.core": "Tu Sistema",
+    "infra.problem": "Una herramienta para los cursos. Otra para el CRM. Otra para automatizaciones. Otra para los pagos. Otra para el marketing. Eso complica el crecimiento, aumenta los costos y hace que vender dependa demasiado de procesos manuales.",
+    "infra.solution": "Nuestra plataforma reúne todo en un solo sistema para que puedas crear, vender y automatizar sin fricción.",
     
     // Principles Section (Proceso)
-    "principles.section": "03 / Proceso",
+    "principles.section": "04 / Proceso",
     "principles.title": "CÓMO FUNCIONA",
     "principles.step1.title": "APLICAS",
     "principles.step1.desc": "Completa tu aplicación y cuéntanos sobre tu conocimiento y experiencia.",
@@ -67,7 +86,7 @@ const translations: Record<Language, Record<string, string>> = {
     "principles.step4.desc": "Juntos creamos tu producto digital y activamos el sistema de monetización.",
     
     // Signals Section (Beneficios)
-    "signals.section": "04 / Beneficios",
+    "signals.section": "05 / Beneficios",
     "signals.title": "QUÉ OBTIENES SI ERES SELECCIONADO",
     "signals.item1.title": "Estructura para Monetizar",
     "signals.item1.desc": "Un sistema probado para convertir tu conocimiento en un producto digital rentable.",
@@ -81,7 +100,7 @@ const translations: Record<Language, Record<string, string>> = {
     "signals.item5.desc": "Modelo de colaboración donde crecemos juntos con participación en ingresos.",
     
     // Apply Section
-    "apply.section": "05 / Aplicar",
+    "apply.section": "06 / Aplicar",
     "apply.title": "Si tienes conocimiento valioso y quieres convertirlo en un activo digital rentable, este es tu punto de partida.",
     "apply.subtitle": "Buscamos socios reales",
     
@@ -102,6 +121,7 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.inicio": "Home",
     "nav.parati": "For You",
     "nav.problema": "The Problem",
+    "nav.solucion": "The Solution",
     "nav.proceso": "Process",
     "nav.beneficios": "Benefits",
     "nav.aplicar": "Apply",
@@ -132,9 +152,27 @@ const translations: Record<Language, Record<string, string>> = {
     "pain.point.5": "Your team works across too many platforms at once.",
     "pain.point.6": "Every new launch forces you to start almost from scratch.",
     "pain.point.7": "You don't own or control your customers' data.",
+
+    // Infrastructure Section
+    "infra.section": "03 / The Solution",
+    "infra.title.1": "The new",
+    "infra.title.2": "infrastructure",
+    "infra.title.3": "for modern digital businesses",
+    "infra.intro": "Today most digital businesses are fragmented.",
+    "infra.fragmented.label": "Fragmented",
+    "infra.unified.label": "Unified",
+    "infra.toggle.hint": "Toggle to unify",
+    "infra.node.courses": "Courses",
+    "infra.node.crm": "CRM",
+    "infra.node.automation": "Automation",
+    "infra.node.payments": "Payments",
+    "infra.node.marketing": "Marketing",
+    "infra.core": "Your System",
+    "infra.problem": "One tool for courses. Another for the CRM. Another for automations. Another for payments. Another for marketing. That complicates growth, increases costs and makes selling depend too much on manual processes.",
+    "infra.solution": "Our platform brings everything together into one system so you can create, sell and automate without friction.",
     
     // Principles Section (Process)
-    "principles.section": "03 / Process",
+    "principles.section": "04 / Process",
     "principles.title": "HOW IT WORKS",
     "principles.step1.title": "YOU APPLY",
     "principles.step1.desc": "Complete your application and tell us about your knowledge and experience.",
@@ -146,7 +184,7 @@ const translations: Record<Language, Record<string, string>> = {
     "principles.step4.desc": "Together we create your digital product and activate the monetization system.",
     
     // Signals Section (Benefits)
-    "signals.section": "04 / Benefits",
+    "signals.section": "05 / Benefits",
     "signals.title": "WHAT YOU GET IF SELECTED",
     "signals.item1.title": "Monetization Structure",
     "signals.item1.desc": "A proven system to turn your knowledge into a profitable digital product.",
@@ -160,7 +198,7 @@ const translations: Record<Language, Record<string, string>> = {
     "signals.item5.desc": "A collaboration model where we grow together with revenue sharing.",
     
     // Apply Section
-    "apply.section": "05 / Apply",
+    "apply.section": "06 / Apply",
     "apply.title": "If you have valuable knowledge and want to turn it into a profitable digital asset, this is your starting point.",
     "apply.subtitle": "We're looking for real partners",
     

@@ -2,6 +2,7 @@ import { HeroSection } from "@/components/hero-section"
 import { SignalsSection } from "@/components/signals-section"
 import { WorkSection } from "@/components/work-section"
 import { PainSection } from "@/components/pain-section"
+import { InfraSection } from "@/components/infra-section"
 import { PrinciplesSection } from "@/components/principles-section"
 import { ApplySection } from "@/components/apply-section"
 import { ColophonSection } from "@/components/colophon-section"
@@ -17,6 +18,7 @@ export default function Page() {
         <HeroSection />
         <WorkSection />
         <PainSection />
+        <InfraSection />
         <PrinciplesSection />
         <SignalsSection />
         <ApplySection />

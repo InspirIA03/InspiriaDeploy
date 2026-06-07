@@ -8,9 +8,10 @@ const navItems = [
   { id: "hero", labelKey: "nav.inicio", number: "00" },
   { id: "work", labelKey: "nav.parati", number: "01" },
   { id: "pain", labelKey: "nav.problema", number: "02" },
-  { id: "principles", labelKey: "nav.proceso", number: "03" },
-  { id: "signals", labelKey: "nav.beneficios", number: "04" },
-  { id: "apply", labelKey: "nav.aplicar", number: "05" },
+  { id: "infra", labelKey: "nav.solucion", number: "03" },
+  { id: "principles", labelKey: "nav.proceso", number: "04" },
+  { id: "signals", labelKey: "nav.beneficios", number: "05" },
+  { id: "apply", labelKey: "nav.aplicar", number: "06" },
 ]
 
 export function SideNav() {
