@@ -164,9 +164,10 @@ function SplitFlapTextInner({ text, className = "", speed = 50 }: SplitFlapTextP
       style={{ perspective: "1000px" }}
     >
       {words.map((word, wordIndex) => {
-        // Long words (e.g. "AUTOMATIZA") get a smaller mobile font size so they fit on one line
+        // Long words (e.g. "AUTOMATIZA") get a slightly smaller font ONLY on mobile so they fit on
+        // one line. On desktop every word matches the rest of the animation.
         const fontSize =
-          word.length >= 9 ? "clamp(2.3rem, 8.5vw, 14rem)" : "clamp(3.2rem, 11vw, 14rem)"
+          isMobile && word.length >= 9 ? "clamp(2.7rem, 9.8vw, 14rem)" : "clamp(3.2rem, 11vw, 14rem)"
         return (
           <div key={wordIndex} className="inline-flex gap-[0.08em] items-center">
             {word.split("").map((char) => {

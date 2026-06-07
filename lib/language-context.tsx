@@ -41,14 +41,18 @@ const translations: Record<Language, Record<string, string>> = {
     
     // Pain Section
     "pain.section": "02 / El Problema",
-    "pain.title.1": "Tener",
-    "pain.title.2": "conocimiento",
-    "pain.title.3": "no es el problema.",
-    "pain.title.4": "Convertirlo",
-    "pain.title.5": "en",
-    "pain.title.6": "ingresos",
-    "pain.title.7": "sí.",
-    "pain.description": "Muchos saben mucho, pero no tienen estructura, oferta ni sistema para monetizarlo. Aquí ayudamos a convertir ese conocimiento en un producto digital escalable.",
+    "pain.title.1": "Tu negocio no necesita",
+    "pain.title.2": "más herramientas.",
+    "pain.title.3": "Necesita un",
+    "pain.title.4": "sistema.",
+    "pain.intro": "Si estás construyendo un negocio digital, seguramente ya has vivido esto:",
+    "pain.point.1": "No tienes un lugar central para operar todo.",
+    "pain.point.2": "Pierdes leads por falta de seguimiento.",
+    "pain.point.3": "Tus automatizaciones están desconectadas.",
+    "pain.point.4": "Tu contenido no se convierte en ventas de forma consistente.",
+    "pain.point.5": "Tu equipo trabaja en demasiadas plataformas al mismo tiempo.",
+    "pain.point.6": "Cada nuevo lanzamiento te obliga a empezar casi desde cero.",
+    "pain.point.7": "No eres dueño ni tienes control sobre los datos de tus clientes.",
     
     // Principles Section (Proceso)
     "principles.section": "03 / Proceso",
@@ -116,14 +120,18 @@ const translations: Record<Language, Record<string, string>> = {
     
     // Pain Section
     "pain.section": "02 / The Problem",
-    "pain.title.1": "Having",
-    "pain.title.2": "knowledge",
-    "pain.title.3": "is not the problem.",
-    "pain.title.4": "Turning it",
-    "pain.title.5": "into",
-    "pain.title.6": "income",
-    "pain.title.7": "is.",
-    "pain.description": "Many know a lot, but lack structure, offer, or system to monetize it. Here we help turn that knowledge into a scalable digital product.",
+    "pain.title.1": "Your business doesn't need",
+    "pain.title.2": "more tools.",
+    "pain.title.3": "It needs a",
+    "pain.title.4": "system.",
+    "pain.intro": "If you're building a digital business, you've probably already experienced this:",
+    "pain.point.1": "You don't have a central place to run everything.",
+    "pain.point.2": "You lose leads from lack of follow-up.",
+    "pain.point.3": "Your automations are disconnected.",
+    "pain.point.4": "Your content doesn't convert into sales consistently.",
+    "pain.point.5": "Your team works across too many platforms at once.",
+    "pain.point.6": "Every new launch forces you to start almost from scratch.",
+    "pain.point.7": "You don't own or control your customers' data.",
     
     // Principles Section (Process)
     "principles.section": "03 / Process",
