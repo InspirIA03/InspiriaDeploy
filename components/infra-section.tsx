@@ -155,14 +155,11 @@ export function InfraSection() {
             </svg>
 
             {/* Core node */}
-            <div
-              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-700 ease-in-out z-20"
-              style={{ transform: `translate(-50%, -50%) scale(${unified ? 1 : 0.85})` }}
-            >
+            <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
               <div
                 className={cn(
-                  "relative flex items-center justify-center w-24 h-24 md:w-28 md:h-28 rounded-full border transition-all duration-700",
-                  unified ? "border-accent bg-accent/10" : "border-border bg-card",
+                  "relative flex items-center justify-center w-24 h-24 md:w-28 md:h-28 rounded-full border transition-all duration-700 ease-in-out",
+                  unified ? "border-accent bg-accent/10 scale-100" : "border-border bg-card scale-90",
                 )}
               >
                 {unified && (
