@@ -132,6 +132,7 @@ function SplitFlapTextInner({ text, className = "", speed = 50 }: SplitFlapTextP
   const words = useMemo(() => text.split(" "), [text])
   const [animationKey, setAnimationKey] = useState(0)
   const [hasInitialized, setHasInitialized] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
   const audio = useSplitFlapAudio()
 
   const handleMouseEnter = useCallback(() => {
@@ -143,6 +144,14 @@ function SplitFlapTextInner({ text, className = "", speed = 50 }: SplitFlapTextP
       setHasInitialized(true)
     }, 1000)
     return () => clearTimeout(timer)
+  }, [])
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)")
+    const update = () => setIsMobile(mq.matches)
+    update()
+    mq.addEventListener("change", update)
+    return () => mq.removeEventListener("change", update)
   }, [])
 
   let globalIndex = 0
