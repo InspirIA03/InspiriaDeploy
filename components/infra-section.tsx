@@ -20,14 +20,14 @@ type Node = {
 }
 
 const NODES: Node[] = [
-  { key: "courses", labelKey: "infra.node.courses", Icon: GraduationCap, scattered: { x: 12, y: 18 }, angle: -90 },
-  { key: "crm", labelKey: "infra.node.crm", Icon: Users, scattered: { x: 82, y: 12 }, angle: -18 },
-  { key: "automation", labelKey: "infra.node.automation", Icon: Workflow, scattered: { x: 88, y: 74 }, angle: 54 },
-  { key: "payments", labelKey: "infra.node.payments", Icon: CreditCard, scattered: { x: 16, y: 80 }, angle: 126 },
-  { key: "marketing", labelKey: "infra.node.marketing", Icon: Megaphone, scattered: { x: 46, y: 92 }, angle: 198 },
+  { key: "courses", labelKey: "infra.node.courses", Icon: GraduationCap, scattered: { x: 14, y: 16 }, angle: -90 },
+  { key: "crm", labelKey: "infra.node.crm", Icon: Users, scattered: { x: 84, y: 14 }, angle: -18 },
+  { key: "automation", labelKey: "infra.node.automation", Icon: Workflow, scattered: { x: 86, y: 78 }, angle: 54 },
+  { key: "payments", labelKey: "infra.node.payments", Icon: CreditCard, scattered: { x: 16, y: 82 }, angle: 126 },
+  { key: "marketing", labelKey: "infra.node.marketing", Icon: Megaphone, scattered: { x: 48, y: 90 }, angle: 198 },
 ]
 
-const ORBIT_RADIUS = 34 // in % of stage
+const ORBIT_RADIUS = 40 // in % of stage
 
 function polar(angle: number, radius: number) {
   const rad = (angle * Math.PI) / 180
