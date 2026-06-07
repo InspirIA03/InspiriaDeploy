@@ -131,19 +131,8 @@ export function InfraSection() {
 
           <div
             ref={stageRef}
-            className="relative w-full aspect-square max-w-[560px] mx-auto border border-border/40 bg-card/30"
+            className="relative w-full aspect-square max-w-[520px] mx-auto"
           >
-            {/* internal grid */}
-            <div
-              className="absolute inset-0 opacity-[0.15]"
-              style={{
-                backgroundImage:
-                  "linear-gradient(to right, var(--color-border) 1px, transparent 1px), linear-gradient(to bottom, var(--color-border) 1px, transparent 1px)",
-                backgroundSize: "40px 40px",
-              }}
-              aria-hidden="true"
-            />
-
             {/* Connecting lines (SVG) */}
             <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none">
               {NODES.map((node) => {
@@ -156,10 +145,10 @@ export function InfraSection() {
                     x2={pos.x}
                     y2={pos.y}
                     stroke="var(--color-accent)"
-                    strokeWidth={unified ? 0.4 : 0.25}
+                    strokeWidth={unified ? 0.3 : 0.2}
                     strokeDasharray={unified ? "0" : "1.5 1.5"}
                     className="transition-all duration-700 ease-in-out"
-                    style={{ opacity: unified ? 0.7 : 0.12 }}
+                    style={{ opacity: unified ? 0.5 : 0.1 }}
                   />
                 )
               })}
@@ -168,18 +157,27 @@ export function InfraSection() {
             {/* Core node */}
             <div
               className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-700 ease-in-out z-20"
-              style={{ transform: `translate(-50%, -50%) scale(${unified ? 1 : 0.82})` }}
+              style={{ transform: `translate(-50%, -50%) scale(${unified ? 1 : 0.85})` }}
             >
               <div
                 className={cn(
-                  "relative flex items-center justify-center w-24 h-24 md:w-28 md:h-28 border transition-all duration-700",
-                  unified ? "border-accent bg-accent/15" : "border-border bg-card",
+                  "relative flex items-center justify-center w-24 h-24 md:w-28 md:h-28 rounded-full border transition-all duration-700",
+                  unified ? "border-accent bg-accent/10" : "border-border bg-card",
                 )}
               >
                 {unified && (
-                  <span className="absolute inset-0 animate-ping bg-accent/10" style={{ animationDuration: "2.5s" }} aria-hidden="true" />
+                  <span
+                    className="absolute inset-0 rounded-full animate-ping bg-accent/10"
+                    style={{ animationDuration: "2.5s" }}
+                    aria-hidden="true"
+                  />
                 )}
-                <span className="relative font-[var(--font-bebas)] text-xl md:text-2xl tracking-tight text-center leading-none px-2">
+                <span
+                  className={cn(
+                    "relative font-[var(--font-bebas)] text-lg md:text-xl tracking-tight text-center leading-none transition-colors duration-700",
+                    unified ? "text-accent" : "text-muted-foreground",
+                  )}
+                >
                   {t("infra.core")}
                 </span>
               </div>
@@ -208,13 +206,13 @@ export function InfraSection() {
                   >
                     <div
                       className={cn(
-                        "flex items-center justify-center w-12 h-12 md:w-14 md:h-14 border transition-all duration-500",
+                        "flex items-center justify-center w-11 h-11 md:w-14 md:h-14 rounded-full border transition-all duration-500",
                         unified
-                          ? "border-accent/60 bg-accent/10 text-accent"
+                          ? "border-accent/50 bg-accent/5 text-accent"
                           : "border-border bg-card text-muted-foreground",
                       )}
                     >
-                      <node.Icon className="w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
+                      <node.Icon className="w-4 h-4 md:w-5 md:h-5" strokeWidth={1.5} />
                     </div>
                     <span
                       className={cn(
