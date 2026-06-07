@@ -129,7 +129,7 @@ const CHARSET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".split("")
 const NUMBERS = "0123456789".split("")
 
 function SplitFlapTextInner({ text, className = "", speed = 50 }: SplitFlapTextProps) {
-  const chars = useMemo(() => text.split(""), [text])
+  const words = useMemo(() => text.split(" "), [text])
   const [animationKey, setAnimationKey] = useState(0)
   const [hasInitialized, setHasInitialized] = useState(false)
   const audio = useSplitFlapAudio()
@@ -145,23 +145,32 @@ function SplitFlapTextInner({ text, className = "", speed = 50 }: SplitFlapTextP
     return () => clearTimeout(timer)
   }, [])
 
+  let globalIndex = 0
+
   return (
     <div
-      className={`inline-flex gap-[0.08em] items-center cursor-pointer ${className}`}
+      className={`flex flex-wrap gap-x-[0.6em] gap-y-2 items-center cursor-pointer ${className}`}
       aria-label={text}
       onMouseEnter={handleMouseEnter}
       style={{ perspective: "1000px" }}
     >
-      {chars.map((char, index) => (
-        <SplitFlapChar
-          key={index}
-          char={char.toUpperCase()}
-          index={index}
-          animationKey={animationKey}
-          skipEntrance={hasInitialized}
-          speed={speed}
-          playClick={audio?.playClick}
-        />
+      {words.map((word, wordIndex) => (
+        <div key={wordIndex} className="inline-flex gap-[0.08em] items-center">
+          {word.split("").map((char) => {
+            const index = globalIndex++
+            return (
+              <SplitFlapChar
+                key={index}
+                char={char.toUpperCase()}
+                index={index}
+                animationKey={animationKey}
+                skipEntrance={hasInitialized}
+                speed={speed}
+                playClick={audio?.playClick}
+              />
+            )
+          })}
+        </div>
       ))}
     </div>
   )

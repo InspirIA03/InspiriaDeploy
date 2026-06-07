@@ -13,9 +13,9 @@ interface LanguageContextType {
 const translations: Record<Language, Record<string, string>> = {
   es: {
     // Hero
-    "hero.title": "MONETIZA",
-    "hero.subtitle": "Tu Conocimiento Digital",
-    "hero.description": "Convierte tu conocimiento en un producto digital y genera tus primeros $1,000 a $5,000 con una plataforma diseñada para ayudarte a monetizarlo.",
+    "hero.title": "CREA VENDE AUTOMATIZA",
+    "hero.subtitle": "Tu Negocio Digital En Un Solo Lugar",
+    "hero.description": "Una plataforma todo en uno para crear productos digitales, lanzar ofertas, automatizar ventas y escalar con marketing, CRM e inteligencia artificial integrada.",
     "hero.cta": "Aplicar Ahora",
     "hero.animation.label": "Conocimiento → Producto",
     
@@ -88,9 +88,9 @@ const translations: Record<Language, Record<string, string>> = {
   },
   en: {
     // Hero
-    "hero.title": "MONETIZE",
-    "hero.subtitle": "Your Digital Knowledge",
-    "hero.description": "Turn your knowledge into a digital product and generate your first $1,000 to $5,000 with a platform designed to help you monetize it.",
+    "hero.title": "CREATE SELL AUTOMATE",
+    "hero.subtitle": "Your Digital Business In One Place",
+    "hero.description": "An all-in-one platform to create digital products, launch offers, automate sales and scale with marketing, CRM and integrated artificial intelligence.",
     "hero.cta": "Apply Now",
     "hero.animation.label": "Knowledge → Product",
     
