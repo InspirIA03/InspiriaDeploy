@@ -193,34 +193,33 @@ function AudienceCard({
       />
 
       {/* Content */}
-      <div className="relative z-10">
+      <div className="relative z-10 flex items-center justify-between">
         <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">{audience.index}</span>
+        {/* Checkmark indicator */}
+        <div
+          className={cn(
+            "w-6 h-6 rounded-full border flex items-center justify-center transition-all duration-300 shrink-0",
+            isActive ? "border-accent bg-accent/20" : "border-muted-foreground/40 bg-transparent",
+          )}
+        >
+          <Check
+            className={cn(
+              "w-3 h-3 transition-colors duration-300",
+              isActive ? "text-accent" : "text-muted-foreground/40",
+            )}
+          />
+        </div>
       </div>
 
-      <div className="relative z-10 pr-8">
+      <div className="relative z-10">
         <h3
           className={cn(
-            "font-[var(--font-bebas)] text-xl md:text-4xl tracking-tight transition-colors duration-300 leading-[0.95] text-balance",
+            "font-[var(--font-bebas)] text-lg md:text-4xl tracking-tight transition-colors duration-300 leading-[0.95] text-balance break-words",
             isActive ? "text-accent" : "text-foreground",
           )}
         >
           {t(audience.labelKey)}
         </h3>
-      </div>
-
-      {/* Checkmark indicator */}
-      <div
-        className={cn(
-          "absolute bottom-4 right-4 w-6 h-6 rounded-full border flex items-center justify-center transition-all duration-300",
-          isActive ? "border-accent bg-accent/20" : "border-muted-foreground/40 bg-transparent",
-        )}
-      >
-        <Check
-          className={cn(
-            "w-3 h-3 transition-colors duration-300",
-            isActive ? "text-accent" : "text-muted-foreground/40",
-          )}
-        />
       </div>
 
       {/* Corner line */}
