@@ -29,19 +29,21 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.aplicar": "Aplicar",
     
     // Work Section (Para Ti)
-    "work.section": "01 / Para Ti",
-    "work.title": "ESTO ES PARA TI SI...",
-    "work.item1.title": "Conocimiento Valioso",
-    "work.item1.desc": "Tienes experiencia o expertise en un tema que otros quieren aprender.",
-    "work.item2.title": "Ingresos Extra",
-    "work.item2.desc": "Quieres crear ingresos extra o reemplazar tu ingreso actual.",
-    "work.item3.title": "Algo Propio",
-    "work.item3.desc": "Quieres construir algo propio y dejar de depender de terceros.",
-    "work.item4.title": "Ejecutar",
-    "work.item4.desc": "Estás dispuesto a tomar acción y ejecutar el plan.",
+    "work.section": "03 / Para Ti",
+    "work.title": "DISEÑADA PARA QUIENES QUIEREN CONSTRUIR NEGOCIOS DIGITALES DE VERDAD",
+    "work.intro": "Esta plataforma es ideal para:",
+    "work.aud.1": "Creadores de contenido",
+    "work.aud.2": "Coaches y mentores",
+    "work.aud.3": "Expertos en cualquier industria",
+    "work.aud.4": "Agencias digitales",
+    "work.aud.5": "Consultores",
+    "work.aud.6": "Infoproductores",
+    "work.aud.7": "Educadores",
+    "work.aud.8": "Equipos que venden online",
+    "work.outro": "Si tu objetivo es crear, vender y automatizar en internet, este sistema fue pensado para ti.",
     
     // Pain Section
-    "pain.section": "02 / El Problema",
+    "pain.section": "01 / El Problema",
     "pain.title.1": "Tu negocio no necesita",
     "pain.title.2": "más herramientas.",
     "pain.title.3": "Necesita un",
@@ -56,7 +58,7 @@ const translations: Record<Language, Record<string, string>> = {
     "pain.point.7": "No eres dueño ni tienes control sobre los datos de tus clientes.",
 
     // Infrastructure Section
-    "infra.section": "03 / La Solución",
+    "infra.section": "02 / La Solución",
     "infra.title.1": "La nueva",
     "infra.title.2": "infraestructura",
     "infra.title.3": "para negocios digitales modernos",
@@ -127,19 +129,22 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.aplicar": "Apply",
     
     // Work Section (For You)
-    "work.section": "01 / For You",
-    "work.title": "THIS IS FOR YOU IF...",
-    "work.item1.title": "Valuable Knowledge",
-    "work.item1.desc": "You have experience or expertise in a topic others want to learn.",
-    "work.item2.title": "Extra Income",
-    "work.item2.desc": "You want to create extra income or replace your current income.",
-    "work.item3.title": "Something of Your Own",
-    "work.item3.desc": "You want to build something of your own and stop depending on others.",
-    "work.item4.title": "Execute",
-    "work.item4.desc": "You are willing to take action and execute the plan.",
+    // Work Section (For You)
+    "work.section": "03 / For You",
+    "work.title": "BUILT FOR THOSE WHO WANT TO BUILD REAL DIGITAL BUSINESSES",
+    "work.intro": "This platform is ideal for:",
+    "work.aud.1": "Content creators",
+    "work.aud.2": "Coaches and mentors",
+    "work.aud.3": "Experts in any industry",
+    "work.aud.4": "Digital agencies",
+    "work.aud.5": "Consultants",
+    "work.aud.6": "Info-product creators",
+    "work.aud.7": "Educators",
+    "work.aud.8": "Teams selling online",
+    "work.outro": "If your goal is to create, sell and automate online, this system was built for you.",
     
     // Pain Section
-    "pain.section": "02 / The Problem",
+    "pain.section": "01 / The Problem",
     "pain.title.1": "Your business doesn't need",
     "pain.title.2": "more tools.",
     "pain.title.3": "It needs a",
@@ -154,7 +159,7 @@ const translations: Record<Language, Record<string, string>> = {
     "pain.point.7": "You don't own or control your customers' data.",
 
     // Infrastructure Section
-    "infra.section": "03 / The Solution",
+    "infra.section": "02 / The Solution",
     "infra.title.1": "The new",
     "infra.title.2": "infrastructure",
     "infra.title.3": "for modern digital businesses",

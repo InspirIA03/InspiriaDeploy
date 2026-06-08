@@ -1,52 +1,36 @@
 "use client"
 
-import { useState, useRef, useEffect } from "react"
+import { useRef, useEffect } from "react"
 import { cn } from "@/lib/utils"
 import { useLanguage } from "@/lib/language-context"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { Check } from "lucide-react"
+import { ArrowUpRight } from "lucide-react"
 
 gsap.registerPlugin(ScrollTrigger)
 
-const criteriosData = [
-  {
-    titleKey: "work.item1.title",
-    mediumKey: "Expertise",
-    descKey: "work.item1.desc",
-    span: "col-span-2 row-span-2",
-  },
-  {
-    titleKey: "work.item2.title",
-    mediumKey: "Monetización",
-    descKey: "work.item2.desc",
-    span: "col-span-1 row-span-1",
-  },
-  {
-    titleKey: "work.item3.title",
-    mediumKey: "Emprendimiento",
-    descKey: "work.item3.desc",
-    span: "col-span-1 row-span-2",
-  },
-  {
-    titleKey: "work.item4.title",
-    mediumKey: "Acción",
-    descKey: "work.item4.desc",
-    span: "col-span-2 row-span-1",
-  },
+const audienceKeys = [
+  "work.aud.1",
+  "work.aud.2",
+  "work.aud.3",
+  "work.aud.4",
+  "work.aud.5",
+  "work.aud.6",
+  "work.aud.7",
+  "work.aud.8",
 ]
 
 export function WorkSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const headerRef = useRef<HTMLDivElement>(null)
-  const gridRef = useRef<HTMLDivElement>(null)
+  const listRef = useRef<HTMLUListElement>(null)
+  const outroRef = useRef<HTMLParagraphElement>(null)
   const { t } = useLanguage()
 
   useEffect(() => {
-    if (!sectionRef.current || !headerRef.current || !gridRef.current) return
+    if (!sectionRef.current) return
 
     const ctx = gsap.context(() => {
-      // Header slide in from left
       gsap.fromTo(
         headerRef.current,
         { x: -60, opacity: 0 },
@@ -63,22 +47,38 @@ export function WorkSection() {
         },
       )
 
-      const cards = gridRef.current?.querySelectorAll("article")
-      if (cards && cards.length > 0) {
-        gsap.set(cards, { y: 60, opacity: 0 })
-        gsap.to(cards, {
+      const items = listRef.current?.querySelectorAll("li")
+      if (items && items.length > 0) {
+        gsap.set(items, { y: 30, opacity: 0 })
+        gsap.to(items, {
           y: 0,
           opacity: 1,
-          duration: 0.8,
-          stagger: 0.1,
+          duration: 0.6,
+          stagger: 0.07,
           ease: "power3.out",
           scrollTrigger: {
-            trigger: gridRef.current,
-            start: "top 90%",
+            trigger: listRef.current,
+            start: "top 85%",
             toggleActions: "play none none reverse",
           },
         })
       }
+
+      gsap.fromTo(
+        outroRef.current,
+        { y: 30, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: outroRef.current,
+            start: "top 90%",
+            toggleActions: "play none none reverse",
+          },
+        },
+      )
     }, sectionRef)
 
     return () => ctx.revert()
@@ -86,129 +86,50 @@ export function WorkSection() {
 
   return (
     <section ref={sectionRef} id="work" className="relative py-32 pl-6 md:pl-28 pr-6 md:pr-12">
-      {/* Section header */}
-      <div ref={headerRef} className="mb-16 flex items-end justify-between">
-        <div>
+      <div className="max-w-5xl">
+        {/* Header */}
+        <div ref={headerRef} className="mb-16">
           <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">{t("work.section")}</span>
-          <h2 className="mt-4 font-[var(--font-bebas)] text-5xl md:text-7xl tracking-tight">{t("work.title")}</h2>
+          <h2 className="mt-4 font-[var(--font-bebas)] text-4xl md:text-6xl lg:text-7xl tracking-tight leading-[0.95] text-balance max-w-3xl">
+            {t("work.title")}
+          </h2>
+          <p className="mt-6 font-mono text-sm text-muted-foreground">{t("work.intro")}</p>
         </div>
-      </div>
 
-      {/* Asymmetric grid */}
-      <div
-        ref={gridRef}
-        className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 auto-rows-[180px] md:auto-rows-[200px]"
-      >
-        {criteriosData.map((criterio, index) => (
-          <CriterioCard key={index} criterio={criterio} index={index} persistHover={index === 0} t={t} />
-        ))}
-      </div>
-    </section>
-  )
-}
+        {/* Audience grid */}
+        <ul ref={listRef} className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-border/40 border border-border/40">
+          {audienceKeys.map((key, index) => (
+            <li
+              key={key}
+              className="group relative flex items-center gap-4 bg-background px-5 py-6 transition-colors duration-300 hover:bg-accent/5"
+            >
+              <span className="font-mono text-[10px] text-muted-foreground/60 tabular-nums">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <span className="flex-1 font-[var(--font-bebas)] text-xl md:text-2xl tracking-tight text-foreground transition-colors duration-300 group-hover:text-accent">
+                {t(key)}
+              </span>
+              <ArrowUpRight className="w-4 h-4 text-muted-foreground/40 transition-all duration-300 group-hover:text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </li>
+          ))}
+        </ul>
 
-function CriterioCard({
-  criterio,
-  index,
-  persistHover = false,
-  t,
-}: {
-  criterio: {
-    titleKey: string
-    mediumKey: string
-    descKey: string
-    span: string
-  }
-  index: number
-  persistHover?: boolean
-  t: (key: string) => string
-}) {
-  const [isHovered, setIsHovered] = useState(false)
-  const cardRef = useRef<HTMLElement>(null)
-  const [isScrollActive, setIsScrollActive] = useState(false)
-
-  useEffect(() => {
-    if (!persistHover || !cardRef.current) return
-
-    const ctx = gsap.context(() => {
-      ScrollTrigger.create({
-        trigger: cardRef.current,
-        start: "top 80%",
-        onEnter: () => setIsScrollActive(true),
-      })
-    }, cardRef)
-
-    return () => ctx.revert()
-  }, [persistHover])
-
-  const isActive = isHovered || isScrollActive
-
-  return (
-    <article
-      ref={cardRef}
-      className={cn(
-        "group relative border border-border/40 p-5 flex flex-col justify-between transition-all duration-500 cursor-pointer overflow-hidden",
-        criterio.span,
-        isActive && "border-accent/60",
-      )}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      {/* Background layer */}
-      <div
-        className={cn(
-          "absolute inset-0 bg-accent/5 transition-opacity duration-500",
-          isActive ? "opacity-100" : "opacity-0",
-        )}
-      />
-
-      {/* Content */}
-      <div className="relative z-10">
-        <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-          {criterio.mediumKey}
-        </span>
-        <h3
-          className={cn(
-            "mt-3 font-[var(--font-bebas)] text-2xl md:text-4xl tracking-tight transition-colors duration-300",
-            isActive ? "text-accent" : "text-foreground",
-          )}
-        >
-          {t(criterio.titleKey)}
-        </h3>
-      </div>
-
-      {/* Description - reveals on hover */}
-      <div className="relative z-10">
+        {/* Outro */}
         <p
-          className={cn(
-            "font-mono text-xs text-muted-foreground leading-relaxed transition-all duration-500 max-w-[280px]",
-            isActive ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2",
-          )}
+          ref={outroRef}
+          className="mt-12 max-w-2xl font-sans text-lg md:text-xl leading-relaxed text-pretty text-muted-foreground"
         >
-          {t(criterio.descKey)}
+          {t("work.outro").split(/(crear, vender y automatizar|create, sell and automate)/i).map((part, i) =>
+            /crear, vender y automatizar|create, sell and automate/i.test(part) ? (
+              <span key={i} className="text-accent font-medium">
+                {part}
+              </span>
+            ) : (
+              part
+            ),
+          )}
         </p>
       </div>
-
-      {/* Checkmark indicator */}
-      <div
-        className={cn(
-          "absolute bottom-4 right-4 w-6 h-6 rounded-full border flex items-center justify-center transition-all duration-300",
-          isActive ? "border-accent bg-accent/20" : "border-muted-foreground/40 bg-transparent",
-        )}
-      >
-        <Check className={cn("w-3 h-3 transition-colors duration-300", isActive ? "text-accent" : "text-muted-foreground/40")} />
-      </div>
-
-      {/* Corner line */}
-      <div
-        className={cn(
-          "absolute top-0 right-0 w-12 h-12 transition-all duration-500",
-          isActive ? "opacity-100" : "opacity-0",
-        )}
-      >
-        <div className="absolute top-0 right-0 w-full h-[1px] bg-accent" />
-        <div className="absolute top-0 right-0 w-[1px] h-full bg-accent" />
-      </div>
-    </article>
+    </section>
   )
 }

@@ -6,9 +6,9 @@ import { useLanguage } from "@/lib/language-context"
 
 const navItems = [
   { id: "hero", labelKey: "nav.inicio", number: "00" },
-  { id: "work", labelKey: "nav.parati", number: "01" },
-  { id: "pain", labelKey: "nav.problema", number: "02" },
-  { id: "infra", labelKey: "nav.solucion", number: "03" },
+  { id: "pain", labelKey: "nav.problema", number: "01" },
+  { id: "infra", labelKey: "nav.solucion", number: "02" },
+  { id: "work", labelKey: "nav.parati", number: "03" },
   { id: "principles", labelKey: "nav.proceso", number: "04" },
   { id: "signals", labelKey: "nav.beneficios", number: "05" },
   { id: "apply", labelKey: "nav.aplicar", number: "06" },

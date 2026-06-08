@@ -16,9 +16,9 @@ export default function Page() {
 
       <div className="relative z-10">
         <HeroSection />
-        <WorkSection />
         <PainSection />
         <InfraSection />
+        <WorkSection />
         <PrinciplesSection />
         <SignalsSection />
         <ApplySection />
