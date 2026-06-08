@@ -10,14 +10,14 @@ import { Check } from "lucide-react"
 gsap.registerPlugin(ScrollTrigger)
 
 const audienceData = [
-  { labelKey: "work.aud.1", index: "01", span: "col-span-2 row-span-2" },
-  { labelKey: "work.aud.2", index: "02", span: "col-span-1 row-span-1" },
-  { labelKey: "work.aud.3", index: "03", span: "col-span-1 row-span-2" },
-  { labelKey: "work.aud.4", index: "04", span: "col-span-2 row-span-1" },
-  { labelKey: "work.aud.5", index: "05", span: "col-span-1 row-span-1" },
-  { labelKey: "work.aud.6", index: "06", span: "col-span-1 row-span-1" },
-  { labelKey: "work.aud.7", index: "07", span: "col-span-1 row-span-1" },
-  { labelKey: "work.aud.8", index: "08", span: "col-span-1 row-span-1" },
+  { labelKey: "work.aud.1", index: "01", span: "md:col-span-2 md:row-span-2" },
+  { labelKey: "work.aud.2", index: "02", span: "md:col-span-1 md:row-span-1" },
+  { labelKey: "work.aud.3", index: "03", span: "md:col-span-1 md:row-span-2" },
+  { labelKey: "work.aud.4", index: "04", span: "md:col-span-2 md:row-span-1" },
+  { labelKey: "work.aud.5", index: "05", span: "md:col-span-1 md:row-span-1" },
+  { labelKey: "work.aud.6", index: "06", span: "md:col-span-1 md:row-span-1" },
+  { labelKey: "work.aud.7", index: "07", span: "md:col-span-1 md:row-span-1" },
+  { labelKey: "work.aud.8", index: "08", span: "md:col-span-1 md:row-span-1" },
 ]
 
 export function WorkSection() {
@@ -123,7 +123,7 @@ export function WorkSection() {
       {/* Asymmetric grid */}
       <div
         ref={gridRef}
-        className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 auto-rows-[160px] md:auto-rows-[190px]"
+        className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 auto-rows-[150px] md:auto-rows-[190px]"
       >
         {audienceData.map((audience, index) => (
           <AudienceCard key={index} audience={audience} persistHover={index === 0} t={t} />
@@ -197,10 +197,10 @@ function AudienceCard({
         <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">{audience.index}</span>
       </div>
 
-      <div className="relative z-10">
+      <div className="relative z-10 pr-8">
         <h3
           className={cn(
-            "font-[var(--font-bebas)] text-2xl md:text-4xl tracking-tight transition-colors duration-300 leading-[0.95]",
+            "font-[var(--font-bebas)] text-xl md:text-4xl tracking-tight transition-colors duration-300 leading-[0.95] text-balance",
             isActive ? "text-accent" : "text-foreground",
           )}
         >
