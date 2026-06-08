@@ -84,8 +84,8 @@ const translations: Record<Language, Record<string, string>> = {
     "principles.step2.desc": "Analizamos tu aplicación para asegurarnos de que eres un buen fit para el programa.",
     "principles.step3.title": "ACCEDES A LA PLATAFORMA",
     "principles.step3.desc": "Si calificas, obtienes acceso inmediato a todos los recursos y herramientas.",
-    "principles.step4.title": "CONSTRUIMOS TU OFERTA",
-    "principles.step4.desc": "Juntos creamos tu producto digital y activamos el sistema de monetización.",
+    "principles.step4.title": "CONSTRUYE Y ESCALA CON IA",
+    "principles.step4.desc": "Construye tu oferta, arma tu sistema y automatiza y escala tu negocio con inteligencia artificial.",
     
     // Signals Section (Beneficios)
     "signals.section": "05 / Beneficios",
@@ -185,8 +185,8 @@ const translations: Record<Language, Record<string, string>> = {
     "principles.step2.desc": "We analyze your application to make sure you're a good fit for the program.",
     "principles.step3.title": "ACCESS THE PLATFORM",
     "principles.step3.desc": "If you qualify, you get immediate access to all resources and tools.",
-    "principles.step4.title": "WE BUILD YOUR OFFER",
-    "principles.step4.desc": "Together we create your digital product and activate the monetization system.",
+    "principles.step4.title": "BUILD & SCALE WITH AI",
+    "principles.step4.desc": "Build your offer, set up your system, and automate and scale your business with artificial intelligence.",
     
     // Signals Section (Benefits)
     "signals.section": "05 / Benefits",
