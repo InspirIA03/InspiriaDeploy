@@ -85,7 +85,7 @@ const translations: Record<Language, Record<string, string>> = {
     "principles.step3.title": "ACCEDES A LA PLATAFORMA",
     "principles.step3.desc": "Si calificas, obtienes acceso inmediato a todos los recursos y herramientas.",
     "principles.step4.title": "CONSTRUYE Y ESCALA CON IA",
-    "principles.step4.desc": "Construye tu oferta, arma tu sistema y automatiza y escala tu negocio con inteligencia artificial.",
+    "principles.step4.desc": "Construye tu oferta, arma tu sistema y deja que la inteligencia artificial automatice y escale tu negocio.",
     
     // Signals Section (Beneficios)
     "signals.section": "05 / Beneficios",
