@@ -26,6 +26,7 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.solucion": "La Solución",
     "nav.proceso": "Proceso",
     "nav.beneficios": "Beneficios",
+    "nav.dentro": "Dentro",
     "nav.aplicar": "Aplicar",
     
     // Work Section (Para Ti)
@@ -101,8 +102,27 @@ const translations: Record<Language, Record<string, string>> = {
     "signals.item5.title": "Revenue Share",
     "signals.item5.desc": "Modelo de colaboración donde crecemos juntos con participación en ingresos.",
     
+    // Capabilities Section (Lo que podrás hacer dentro)
+    "cap.section": "06 / Dentro",
+    "cap.title": "Todo lo que puedes construir dentro de la plataforma",
+    "cap.subtitle": "Lo que podrás hacer dentro",
+    "cap.1": "Cursos y áreas privadas",
+    "cap.2": "Membresías y comunidades de pago",
+    "cap.3": "Funnels de venta",
+    "cap.4": "Formularios y aplicaciones",
+    "cap.5": "Automatizaciones",
+    "cap.6": "Pipelines de ventas",
+    "cap.7": "Seguimiento de clientes",
+    "cap.8": "Segmentación por intereses",
+    "cap.9": "Agentes y flujos impulsados por IA",
+    "cap.10": "Calendarios",
+    "cap.11": "Integración a tus redes sociales",
+    "cap.12": "Base de datos de clientes propia",
+    "cap.11.detail": "IG · TikTok · Facebook · YouTube · Google Business",
+    "cap.counter": "Módulos",
+
     // Apply Section
-    "apply.section": "06 / Aplicar",
+    "apply.section": "07 / Aplicar",
     "apply.title": "Si tienes conocimiento valioso y quieres convertirlo en un activo digital rentable, este es tu punto de partida.",
     "apply.subtitle": "Buscamos socios reales",
     
@@ -126,6 +146,7 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.solucion": "The Solution",
     "nav.proceso": "Process",
     "nav.beneficios": "Benefits",
+    "nav.dentro": "Inside",
     "nav.aplicar": "Apply",
     
     // Work Section (For You)
@@ -202,8 +223,27 @@ const translations: Record<Language, Record<string, string>> = {
     "signals.item5.title": "Revenue Share",
     "signals.item5.desc": "A collaboration model where we grow together with revenue sharing.",
     
+    // Capabilities Section (What you can build inside)
+    "cap.section": "06 / Inside",
+    "cap.title": "Everything you can build inside the platform",
+    "cap.subtitle": "What you can do inside",
+    "cap.1": "Courses and private areas",
+    "cap.2": "Paid memberships and communities",
+    "cap.3": "Sales funnels",
+    "cap.4": "Forms and applications",
+    "cap.5": "Automations",
+    "cap.6": "Sales pipelines",
+    "cap.7": "Customer tracking",
+    "cap.8": "Interest-based segmentation",
+    "cap.9": "AI-powered agents and flows",
+    "cap.10": "Calendars",
+    "cap.11": "Social media integrations",
+    "cap.12": "Your own customer database",
+    "cap.11.detail": "IG · TikTok · Facebook · YouTube · Google Business",
+    "cap.counter": "Modules",
+
     // Apply Section
-    "apply.section": "06 / Apply",
+    "apply.section": "07 / Apply",
     "apply.title": "If you have valuable knowledge and want to turn it into a profitable digital asset, this is your starting point.",
     "apply.subtitle": "We're looking for real partners",
     

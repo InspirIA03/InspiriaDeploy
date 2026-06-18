@@ -4,6 +4,7 @@ import { WorkSection } from "@/components/work-section"
 import { PainSection } from "@/components/pain-section"
 import { InfraSection } from "@/components/infra-section"
 import { PrinciplesSection } from "@/components/principles-section"
+import { CapabilitiesSection } from "@/components/capabilities-section"
 import { ApplySection } from "@/components/apply-section"
 import { ColophonSection } from "@/components/colophon-section"
 import { SideNav } from "@/components/side-nav"
@@ -21,6 +22,7 @@ export default function Page() {
         <WorkSection />
         <PrinciplesSection />
         <SignalsSection />
+        <CapabilitiesSection />
         <ApplySection />
         <ColophonSection />
       </div>

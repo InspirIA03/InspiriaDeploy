@@ -11,7 +11,8 @@ const navItems = [
   { id: "work", labelKey: "nav.parati", number: "03" },
   { id: "principles", labelKey: "nav.proceso", number: "04" },
   { id: "signals", labelKey: "nav.beneficios", number: "05" },
-  { id: "apply", labelKey: "nav.aplicar", number: "06" },
+  { id: "capabilities", labelKey: "nav.dentro", number: "06" },
+  { id: "apply", labelKey: "nav.aplicar", number: "07" },
 ]
 
 export function SideNav() {
