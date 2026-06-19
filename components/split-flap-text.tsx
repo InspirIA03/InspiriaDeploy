@@ -39,11 +39,9 @@ export function SplitFlapAudioProvider({ children }: { children: React.ReactNode
     }
   }, [isMuted])
 
-  const playClick = useCallback(() => {
-    if (isMuted) return
-
-    triggerHaptic()
-
+  // Generates the click tone. Not guarded by isMuted so it can be used to unlock
+  // audio inside a user gesture (required on mobile browsers).
+  const playTone = useCallback(() => {
     try {
       const ctx = getAudioContext()
       if (!ctx) return
@@ -82,21 +80,25 @@ export function SplitFlapAudioProvider({ children }: { children: React.ReactNode
     } catch {
       // Audio not supported
     }
-  }, [isMuted, getAudioContext, triggerHaptic])
+  }, [getAudioContext])
+
+  const playClick = useCallback(() => {
+    if (isMuted) return
+    triggerHaptic()
+    playTone()
+  }, [isMuted, triggerHaptic, playTone])
 
   const toggleMute = useCallback(() => {
-    setIsMuted((prev) => !prev)
-    if (isMuted) {
-      try {
-        const ctx = getAudioContext()
-        if (ctx && ctx.state === "suspended") {
-          ctx.resume()
-        }
-      } catch {
-        // Audio not supported
+    setIsMuted((prev) => {
+      const next = !prev
+      // When turning sound ON, unlock + play a click within this user gesture so
+      // mobile browsers register the AudioContext as allowed to play.
+      if (!next) {
+        playTone()
       }
-    }
-  }, [isMuted, getAudioContext])
+      return next
+    })
+  }, [playTone])
 
   const value = useMemo(() => ({ isMuted, toggleMute, playClick }), [isMuted, toggleMute, playClick])
 
@@ -161,13 +163,17 @@ function SplitFlapTextInner({ text, className = "", speed = 50 }: SplitFlapTextP
       className={`flex flex-wrap gap-x-[0.5em] md:gap-x-[1.1em] gap-y-2 items-center cursor-pointer ${className}`}
       aria-label={text}
       onMouseEnter={handleMouseEnter}
+      onClick={handleMouseEnter}
       style={{ perspective: "1000px" }}
     >
       {words.map((word, wordIndex) => {
-        // Long words (e.g. "AUTOMATIZA") get a slightly smaller font ONLY on mobile so they fit on
-        // one line. On desktop every word matches the rest of the animation.
-        const fontSize =
-          isMobile && word.length >= 9 ? "clamp(2.7rem, 9.8vw, 14rem)" : "clamp(3.2rem, 11vw, 14rem)"
+        // Mobile: long words (e.g. "AUTOMATIZA") shrink slightly so they fit on one line.
+        // Desktop: smaller clamp so the whole hero (title + subtitle + copy + CTA) fits on screen.
+        const fontSize = isMobile
+          ? word.length >= 9
+            ? "clamp(2.7rem, 9.8vw, 14rem)"
+            : "clamp(3.2rem, 11vw, 14rem)"
+          : "clamp(3rem, 6.2vw, 6.5rem)"
         return (
           <div key={wordIndex} className="inline-flex gap-[0.08em] items-center">
             {word.split("").map((char) => {
