@@ -129,9 +129,10 @@ const CHARSET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".split("")
 const NUMBERS = "0123456789".split("")
 
 function SplitFlapTextInner({ text, className = "", speed = 50 }: SplitFlapTextProps) {
-  const chars = useMemo(() => text.split(""), [text])
+  const words = useMemo(() => text.split(" "), [text])
   const [animationKey, setAnimationKey] = useState(0)
   const [hasInitialized, setHasInitialized] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
   const audio = useSplitFlapAudio()
 
   const handleMouseEnter = useCallback(() => {
@@ -145,24 +146,48 @@ function SplitFlapTextInner({ text, className = "", speed = 50 }: SplitFlapTextP
     return () => clearTimeout(timer)
   }, [])
 
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)")
+    const update = () => setIsMobile(mq.matches)
+    update()
+    mq.addEventListener("change", update)
+    return () => mq.removeEventListener("change", update)
+  }, [])
+
+  let globalIndex = 0
+
   return (
     <div
-      className={`inline-flex gap-[0.08em] items-center cursor-pointer ${className}`}
+      className={`flex flex-wrap gap-x-[0.5em] md:gap-x-[1.1em] gap-y-2 items-center cursor-pointer ${className}`}
       aria-label={text}
       onMouseEnter={handleMouseEnter}
       style={{ perspective: "1000px" }}
     >
-      {chars.map((char, index) => (
-        <SplitFlapChar
-          key={index}
-          char={char.toUpperCase()}
-          index={index}
-          animationKey={animationKey}
-          skipEntrance={hasInitialized}
-          speed={speed}
-          playClick={audio?.playClick}
-        />
-      ))}
+      {words.map((word, wordIndex) => {
+        // Long words (e.g. "AUTOMATIZA") get a slightly smaller font ONLY on mobile so they fit on
+        // one line. On desktop every word matches the rest of the animation.
+        const fontSize =
+          isMobile && word.length >= 9 ? "clamp(2.7rem, 9.8vw, 14rem)" : "clamp(3.2rem, 11vw, 14rem)"
+        return (
+          <div key={wordIndex} className="inline-flex gap-[0.08em] items-center">
+            {word.split("").map((char) => {
+              const index = globalIndex++
+              return (
+                <SplitFlapChar
+                  key={index}
+                  char={char.toUpperCase()}
+                  index={index}
+                  animationKey={animationKey}
+                  skipEntrance={hasInitialized}
+                  speed={speed}
+                  playClick={audio?.playClick}
+                  fontSize={fontSize}
+                />
+              )
+            })}
+          </div>
+        )
+      })}
     </div>
   )
 }
@@ -178,9 +203,10 @@ interface SplitFlapCharProps {
   skipEntrance: boolean
   speed: number
   playClick?: () => void
+  fontSize?: string
 }
 
-function SplitFlapChar({ char, index, animationKey, skipEntrance, speed, playClick }: SplitFlapCharProps) {
+function SplitFlapChar({ char, index, animationKey, skipEntrance, speed, playClick, fontSize = "clamp(3.2rem, 11vw, 14rem)" }: SplitFlapCharProps) {
   const displayChar = CHARSET.includes(char) ? char : " "
   const isSpace = char === " "
   const [currentChar, setCurrentChar] = useState(skipEntrance ? displayChar : " ")
@@ -248,7 +274,7 @@ function SplitFlapChar({ char, index, animationKey, skipEntrance, speed, playCli
       <div
         style={{
           width: "0.3em",
-          fontSize: "clamp(3.2rem, 11vw, 14rem)",
+          fontSize,
         }}
       />
     )
@@ -261,7 +287,7 @@ function SplitFlapChar({ char, index, animationKey, skipEntrance, speed, playCli
       transition={{ delay: tileDelay, duration: 0.3, ease: "easeOut" }}
       className="relative overflow-hidden flex items-center justify-center font-[family-name:var(--font-bebas)]"
       style={{
-        fontSize: "clamp(3.2rem, 11vw, 14rem)",
+        fontSize,
         width: "0.65em",
         height: "1.05em",
         backgroundColor: bgColor,

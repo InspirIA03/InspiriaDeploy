@@ -5,12 +5,13 @@ import { ScrambleTextOnHover } from "@/components/scramble-text"
 import { SplitFlapText, SplitFlapMuteToggle, SplitFlapAudioProvider } from "@/components/split-flap-text"
 import { AnimatedNoise } from "@/components/animated-noise"
 import { BitmapChevron } from "@/components/bitmap-chevron"
+import { useLanguage } from "@/lib/language-context"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 gsap.registerPlugin(ScrollTrigger)
 
-function HeroAnimation() {
+function HeroAnimation({ language, t }: { language: string; t: (key: string) => string }) {
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -158,7 +159,7 @@ function HeroAnimation() {
         {/* Label */}
         <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap">
           <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground/60">
-            Conocimiento → Producto
+            {t("hero.animation.label")}
           </span>
         </div>
       </div>
@@ -169,6 +170,7 @@ function HeroAnimation() {
 export function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
+  const { language, toggleLanguage, t } = useLanguage()
 
   useEffect(() => {
     if (!sectionRef.current || !contentRef.current) return
@@ -193,11 +195,19 @@ export function HeroSection() {
     <section ref={sectionRef} id="hero" className="relative min-h-screen flex items-center pl-6 md:pl-28 pr-6 md:pr-12">
       <AnimatedNoise opacity={0.03} />
 
+      {/* Language toggle button */}
+      <button
+        onClick={toggleLanguage}
+        className="absolute top-6 right-6 md:top-8 md:right-12 z-50 border border-border/50 px-3 py-1.5 font-mono text-[10px] uppercase tracking-widest text-muted-foreground hover:border-accent hover:text-accent transition-all duration-200"
+      >
+        {language === "es" ? "EN" : "ES"}
+      </button>
+
       {/* Main content */}
       <div ref={contentRef} className="flex-1 w-full max-w-4xl">
         <SplitFlapAudioProvider>
           <div className="relative">
-            <SplitFlapText text="MONETIZA" speed={80} />
+            <SplitFlapText text={t("hero.title")} speed={80} key={language} />
             <div className="mt-4">
               <SplitFlapMuteToggle />
             </div>
@@ -205,11 +215,11 @@ export function HeroSection() {
         </SplitFlapAudioProvider>
 
         <h2 className="font-[var(--font-bebas)] text-muted-foreground/60 text-[clamp(1.5rem,4vw,3rem)] mt-4 tracking-wide uppercase">
-          Tu Conocimiento Digital
+          {t("hero.subtitle")}
         </h2>
 
         <p className="mt-8 max-w-2xl font-sans text-lg md:text-xl lg:text-2xl text-foreground/90 leading-relaxed">
-          Convierte tu conocimiento en un producto digital y genera tus primeros $1,000 a $5,000 con una plataforma diseñada para ayudarte a monetizarlo.
+          {t("hero.description")}
         </p>
 
         <div className="mt-16">
@@ -217,14 +227,14 @@ export function HeroSection() {
             href="#apply"
             className="group inline-flex items-center gap-3 border border-foreground/20 px-6 py-3 font-mono text-xs uppercase tracking-widest text-foreground hover:border-accent hover:text-accent transition-all duration-200"
           >
-            <ScrambleTextOnHover text="Aplicar Ahora" as="span" duration={0.6} />
+            <ScrambleTextOnHover text={t("hero.cta")} as="span" duration={0.6} />
             <BitmapChevron className="transition-transform duration-[400ms] ease-in-out group-hover:rotate-45" />
           </a>
         </div>
       </div>
 
       {/* Animated growth visualization */}
-      <HeroAnimation />
+      <HeroAnimation language={language} t={t} />
     </section>
   )
 }
