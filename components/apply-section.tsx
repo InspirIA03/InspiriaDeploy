@@ -127,22 +127,26 @@ export function ApplySection() {
 
         {/* Main title */}
         <h2 className="font-[var(--font-bebas)] text-4xl md:text-5xl lg:text-6xl tracking-tight leading-tight mb-6">
-          {t("apply.title").split(" ").map((word, index) => (
-            <span key={index} className="title-word inline-block mr-[0.3em]">
-              {["conocimiento", "knowledge", "activo", "asset", "rentable", "profitable"].includes(word.toLowerCase()) ? (
-                <span className="text-accent">{word}</span>
-              ) : (
-                word
-              )}
-            </span>
-          ))}
+          {t("apply.title").split(" ").map((word, index) => {
+            const clean = word.toLowerCase().replace(/[.,]/g, "")
+            return (
+              <span key={index} className="title-word inline-block mr-[0.3em]">
+                {["crear,", "vender", "automatizar", "create,", "sell", "automate"].includes(word.toLowerCase()) ||
+                ["crear", "vender", "automatizar", "create", "sell", "automate"].includes(clean) ? (
+                  <span className="text-accent">{word}</span>
+                ) : (
+                  word
+                )}
+              </span>
+            )
+          })}
         </h2>
 
         {/* Subtitle */}
         <p className="font-mono text-sm md:text-base text-muted-foreground max-w-xl mx-auto">
           {t("apply.subtitle").split(" ").map((word, index) => (
             <span key={index} className="title-word inline-block mr-[0.3em]">
-              {["socios", "partners", "reales", "reales.", "real"].includes(word.toLowerCase()) ? (
+              {["plataforma", "platform", "acceso", "access"].includes(word.toLowerCase()) ? (
                 <span className="text-accent">{word}</span>
               ) : (
                 word

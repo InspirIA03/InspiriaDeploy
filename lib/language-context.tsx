@@ -123,8 +123,8 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Apply Section
     "apply.section": "07 / Aplicar",
-    "apply.title": "Si tienes conocimiento valioso y quieres convertirlo en un activo digital rentable, este es tu punto de partida.",
-    "apply.subtitle": "Buscamos socios reales",
+    "apply.title": "Si estás listo para crear, vender y automatizar tu negocio digital en un solo sistema, este es tu punto de partida.",
+    "apply.subtitle": "Solicita tu acceso a la plataforma",
     
     // Colophon
     "colophon.title": "INSPIRIA",
@@ -244,8 +244,8 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Apply Section
     "apply.section": "07 / Apply",
-    "apply.title": "If you have valuable knowledge and want to turn it into a profitable digital asset, this is your starting point.",
-    "apply.subtitle": "We're looking for real partners",
+    "apply.title": "If you're ready to create, sell and automate your digital business in one system, this is your starting point.",
+    "apply.subtitle": "Request your access to the platform",
     
     // Colophon
     "colophon.title": "INSPIRIA",
