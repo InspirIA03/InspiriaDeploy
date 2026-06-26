@@ -5,43 +5,23 @@ import { cn } from "@/lib/utils"
 import { useLanguage } from "@/lib/language-context"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import {
-  GraduationCap,
-  Users,
-  Filter,
-  FileInput,
-  Workflow,
-  GitBranch,
-  UserSearch,
-  Tags,
-  Bot,
-  CalendarDays,
-  Share2,
-  Database,
-} from "lucide-react"
+import { PencilRuler, TrendingUp, Workflow, Rocket } from "lucide-react"
 
 gsap.registerPlugin(ScrollTrigger)
 
-const capabilities = [
-  { key: "cap.1", Icon: GraduationCap },
-  { key: "cap.2", Icon: Users },
-  { key: "cap.3", Icon: Filter },
-  { key: "cap.4", Icon: FileInput },
-  { key: "cap.5", Icon: Workflow },
-  { key: "cap.6", Icon: GitBranch },
-  { key: "cap.7", Icon: UserSearch },
-  { key: "cap.8", Icon: Tags },
-  { key: "cap.9", Icon: Bot },
-  { key: "cap.10", Icon: CalendarDays },
-  { key: "cap.11", Icon: Share2, detailKey: "cap.11.detail" },
-  { key: "cap.12", Icon: Database },
+const pillars = [
+  { key: "p1", Icon: PencilRuler },
+  { key: "p2", Icon: TrendingUp },
+  { key: "p3", Icon: Workflow },
+  { key: "p4", Icon: Rocket },
 ]
 
 export function CapabilitiesSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const headerRef = useRef<HTMLDivElement>(null)
   const listRef = useRef<HTMLUListElement>(null)
-  const [active, setActive] = useState<number | null>(null)
+  const panelRef = useRef<HTMLDivElement>(null)
+  const [active, setActive] = useState(0)
   const { t } = useLanguage()
 
   // Header + rows entrance animation
@@ -61,7 +41,7 @@ export function CapabilitiesSection() {
         },
       )
 
-      const rows = listRef.current?.querySelectorAll(".cap-row")
+      const rows = listRef.current?.querySelectorAll(".pillar-row")
       if (rows) {
         gsap.fromTo(
           rows,
@@ -70,7 +50,7 @@ export function CapabilitiesSection() {
             y: 0,
             opacity: 1,
             duration: 0.6,
-            stagger: 0.06,
+            stagger: 0.1,
             ease: "power3.out",
             scrollTrigger: { trigger: listRef.current, start: "top 80%", toggleActions: "play none none reverse" },
           },
@@ -81,124 +61,161 @@ export function CapabilitiesSection() {
     return () => ctx.revert()
   }, [])
 
-  const displayIndex = active !== null ? active : null
-  const ghostNumber = displayIndex !== null ? String(displayIndex + 1).padStart(2, "0") : "12"
+  // Animate the detail panel content whenever the active pillar changes
+  useEffect(() => {
+    if (!panelRef.current) return
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        panelRef.current!.querySelectorAll(".panel-anim"),
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.5, stagger: 0.05, ease: "power2.out" },
+      )
+    }, panelRef)
+    return () => ctx.revert()
+  }, [active])
+
+  const activePillar = pillars[active]
+  const ghostNumber = String(active + 1).padStart(2, "0")
+  const items = t(`cap.${activePillar.key}.items`).split("|")
 
   return (
     <section id="capabilities" ref={sectionRef} className="relative py-32 pl-6 md:pl-28 pr-6 md:pr-12 overflow-hidden">
-      {/* Giant ghost number in the background that reacts to hover */}
+      {/* Giant ghost number in the background that reacts to the active pillar */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -right-4 md:right-8 top-1/2 -translate-y-1/2 select-none"
       >
         <span
           key={ghostNumber}
-          className="block font-[var(--font-bebas)] leading-none text-[40vw] md:text-[28vw] text-transparent transition-all duration-500"
-          style={{
-            WebkitTextStroke: "1px var(--color-border)",
-            opacity: active !== null ? 0.5 : 0.18,
-          }}
+          className="block font-[var(--font-bebas)] leading-none text-[40vw] md:text-[26vw] text-transparent"
+          style={{ WebkitTextStroke: "1px var(--color-border)", opacity: 0.4 }}
         >
           {ghostNumber}
         </span>
       </div>
 
       {/* Header */}
-      <div ref={headerRef} className="relative z-10 mb-16">
+      <div ref={headerRef} className="relative z-10 mb-14">
         <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">{t("cap.subtitle")}</span>
         <h2 className="mt-4 max-w-4xl font-[var(--font-bebas)] text-5xl md:text-7xl tracking-tight leading-[0.95] text-balance">
           {t("cap.title")}
         </h2>
+        <p className="mt-5 max-w-xl text-muted-foreground leading-relaxed text-pretty">{t("cap.intro")}</p>
         <div className="mt-6 flex items-center gap-3">
           <span className="font-mono text-xs text-accent tabular-nums">{ghostNumber}</span>
           <span className="h-px w-10 bg-border" />
           <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-            12 {t("cap.counter")}
+            4 {t("cap.counter")}
           </span>
         </div>
       </div>
 
-      {/* Interactive index list */}
-      <ul ref={listRef} className="relative z-10 border-t border-border/40">
-        {capabilities.map((cap, index) => {
-          const isActive = active === index
-          return (
-            <li
-              key={cap.key}
-              className="cap-row border-b border-border/40"
-              onMouseEnter={() => setActive(index)}
-              onMouseLeave={() => setActive(null)}
-            >
-              <button
-                type="button"
-                onFocus={() => setActive(index)}
-                onBlur={() => setActive(null)}
-                className="group relative flex w-full items-center gap-4 md:gap-8 py-5 md:py-7 text-left"
-              >
-                {/* Accent sweep fill */}
-                <span
-                  aria-hidden="true"
-                  className={cn(
-                    "absolute inset-y-0 left-0 -z-10 bg-accent/10 transition-all duration-500 ease-out",
-                    isActive ? "w-full" : "w-0",
-                  )}
-                />
-
-                {/* Index */}
-                <span
-                  className={cn(
-                    "font-mono text-[10px] md:text-xs tabular-nums tracking-widest transition-colors duration-300 shrink-0 w-7",
-                    isActive ? "text-accent" : "text-muted-foreground",
-                  )}
+      {/* Interactive pillars + detail panel */}
+      <div className="relative z-10 grid md:grid-cols-2 gap-px bg-border/40 border border-border/40">
+        {/* Pillar selector */}
+        <ul ref={listRef} className="bg-background">
+          {pillars.map((pillar, index) => {
+            const isActive = active === index
+            return (
+              <li key={pillar.key} className="pillar-row border-b border-border/40 last:border-b-0">
+                <button
+                  type="button"
+                  onMouseEnter={() => setActive(index)}
+                  onFocus={() => setActive(index)}
+                  onClick={() => setActive(index)}
+                  aria-pressed={isActive}
+                  className="group relative flex w-full items-center gap-4 md:gap-6 py-6 md:py-8 px-5 md:px-8 text-left"
                 >
-                  {String(index + 1).padStart(2, "0")}
-                </span>
+                  {/* Accent sweep fill */}
+                  <span
+                    aria-hidden="true"
+                    className={cn(
+                      "absolute inset-y-0 left-0 -z-10 bg-accent/10 transition-all duration-500 ease-out",
+                      isActive ? "w-full" : "w-0",
+                    )}
+                  />
+                  {/* Active left bar */}
+                  <span
+                    aria-hidden="true"
+                    className={cn(
+                      "absolute left-0 inset-y-0 w-[3px] bg-accent transition-opacity duration-300",
+                      isActive ? "opacity-100" : "opacity-0",
+                    )}
+                  />
 
-                {/* Icon */}
-                <cap.Icon
-                  className={cn(
-                    "w-5 h-5 md:w-6 md:h-6 shrink-0 transition-colors duration-300",
-                    isActive ? "text-accent" : "text-muted-foreground/70",
-                  )}
-                  strokeWidth={1.5}
-                />
-
-                {/* Title + optional detail */}
-                <span className="flex flex-col min-w-0">
                   <span
                     className={cn(
-                      "font-[var(--font-bebas)] text-2xl md:text-4xl tracking-tight leading-none transition-all duration-300",
-                      isActive ? "text-accent md:translate-x-2" : "text-foreground",
+                      "font-mono text-[10px] md:text-xs tabular-nums tracking-widest transition-colors duration-300 shrink-0 w-7",
+                      isActive ? "text-accent" : "text-muted-foreground",
                     )}
                   >
-                    {t(cap.key)}
+                    {String(index + 1).padStart(2, "0")}
                   </span>
-                  {cap.detailKey && (
-                    <span
-                      className={cn(
-                        "font-mono text-[10px] md:text-xs text-muted-foreground tracking-wide overflow-hidden transition-all duration-500",
-                        isActive ? "max-h-8 mt-2 opacity-100" : "max-h-0 opacity-0 md:max-h-0 md:opacity-0",
-                      )}
-                    >
-                      {t(cap.detailKey)}
-                    </span>
-                  )}
-                </span>
 
-                {/* Arrow */}
-                <span
-                  className={cn(
-                    "ml-auto shrink-0 font-mono text-lg transition-all duration-300",
-                    isActive ? "text-accent translate-x-0 opacity-100" : "text-muted-foreground/40 -translate-x-2 opacity-0",
-                  )}
-                >
-                  →
-                </span>
-              </button>
-            </li>
-          )
-        })}
-      </ul>
+                  <pillar.Icon
+                    className={cn(
+                      "w-5 h-5 md:w-6 md:h-6 shrink-0 transition-colors duration-300",
+                      isActive ? "text-accent" : "text-muted-foreground/70",
+                    )}
+                    strokeWidth={1.5}
+                  />
+
+                  <span
+                    className={cn(
+                      "font-[var(--font-bebas)] text-3xl md:text-5xl tracking-tight leading-none transition-all duration-300",
+                      isActive ? "text-accent md:translate-x-1" : "text-foreground",
+                    )}
+                  >
+                    {t(`cap.${pillar.key}.name`)}
+                  </span>
+
+                  <span
+                    className={cn(
+                      "ml-auto shrink-0 font-mono text-lg transition-all duration-300",
+                      isActive
+                        ? "text-accent translate-x-0 opacity-100"
+                        : "text-muted-foreground/40 -translate-x-2 opacity-0",
+                    )}
+                  >
+                    →
+                  </span>
+                </button>
+              </li>
+            )
+          })}
+        </ul>
+
+        {/* Detail panel */}
+        <div ref={panelRef} className="bg-background p-6 md:p-10 flex flex-col">
+          <div className="panel-anim flex items-center gap-3">
+            <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+              {t("cap.allowsLabel")}
+            </span>
+            <span className="h-px flex-1 bg-border/60" />
+          </div>
+
+          {/* Capability chips */}
+          <ul className="mt-6 flex flex-wrap gap-2.5">
+            {items.map((item, i) => (
+              <li
+                key={`${activePillar.key}-${i}`}
+                className="panel-anim flex items-center gap-2 border border-border/60 bg-card/40 px-3.5 py-2"
+              >
+                <span className="h-1.5 w-1.5 rotate-45 bg-accent shrink-0" aria-hidden="true" />
+                <span className="text-sm text-foreground/90">{item}</span>
+              </li>
+            ))}
+          </ul>
+
+          {/* Objective */}
+          <div className="panel-anim mt-auto pt-10">
+            <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">{t("cap.objLabel")}</span>
+            <p className="mt-3 font-[var(--font-bebas)] text-2xl md:text-3xl leading-[1.05] tracking-tight text-balance">
+              {t(`cap.${activePillar.key}.obj`)}
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
   )
 }
