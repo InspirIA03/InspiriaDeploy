@@ -14,6 +14,7 @@ const beneficiosData = [
   { icon: "03", titleKey: "signals.item3.title", noteKey: "signals.item3.desc" },
   { icon: "04", titleKey: "signals.item4.title", noteKey: "signals.item4.desc" },
   { icon: "05", titleKey: "signals.item5.title", noteKey: "signals.item5.desc" },
+  { icon: "06", titleKey: "signals.item6.title", noteKey: "signals.item6.desc" },
 ]
 
 export function SignalsSection() {
