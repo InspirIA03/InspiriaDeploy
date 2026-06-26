@@ -101,6 +101,8 @@ const translations: Record<Language, Record<string, string>> = {
     "signals.item4.desc": "Herramientas de automatización y ventas para escalar tu negocio.",
     "signals.item5.title": "Revenue Share",
     "signals.item5.desc": "Modelo de colaboración donde crecemos juntos con participación en ingresos.",
+    "signals.item6.title": "Comunidad",
+    "signals.item6.desc": "Acceso a una comunidad activa para compartir aprendizajes, intercambiar conocimiento y crecer junto a otros creadores y emprendedores digitales.",
     
     // Capabilities Section (Lo que podrás hacer dentro)
     "cap.section": "06 / Dentro",
@@ -224,6 +226,8 @@ const translations: Record<Language, Record<string, string>> = {
     "signals.item4.desc": "Automation and sales tools to scale your business.",
     "signals.item5.title": "Revenue Share",
     "signals.item5.desc": "A collaboration model where we grow together with revenue sharing.",
+    "signals.item6.title": "Community",
+    "signals.item6.desc": "Access to an active community to share learnings, exchange knowledge and grow alongside other digital creators and entrepreneurs.",
     
     // Capabilities Section (What you can build inside)
     "cap.section": "06 / Inside",
