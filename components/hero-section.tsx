@@ -205,6 +205,16 @@ export function HeroSection() {
 
       {/* Main content */}
       <div ref={contentRef} className="flex-1 w-full max-w-4xl">
+        <div className="mb-6 inline-flex items-center gap-2.5 border border-accent/40 bg-accent/5 px-3.5 py-1.5">
+          <span className="relative flex h-2 w-2" aria-hidden="true">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+          </span>
+          <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-accent">
+            {t("hero.badge")}
+          </span>
+        </div>
+
         <SplitFlapAudioProvider>
           <div className="relative">
             <SplitFlapText text={t("hero.title")} speed={80} key={language} />

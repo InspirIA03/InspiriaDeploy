@@ -18,6 +18,7 @@ const translations: Record<Language, Record<string, string>> = {
     "hero.description": "Una plataforma todo en uno para crear productos digitales, lanzar ofertas, automatizar ventas y escalar con marketing, CRM e inteligencia artificial integrada.",
     "hero.cta": "Aplicar Ahora",
     "hero.animation.label": "Conocimiento → Producto",
+    "hero.badge": "Revenue Share · No pagas hasta vender",
     
     // Navigation
     "nav.inicio": "Inicio",
@@ -57,6 +58,9 @@ const translations: Record<Language, Record<string, string>> = {
     "pain.point.5": "Tu equipo trabaja en demasiadas plataformas al mismo tiempo.",
     "pain.point.6": "Cada nuevo lanzamiento te obliga a empezar casi desde cero.",
     "pain.point.7": "No eres dueño ni tienes control sobre los datos de tus clientes.",
+    "pain.closer.label": "Y lo más importante:",
+    "pain.closer.title": "Solo ganamos cuando tú ganas.",
+    "pain.closer.desc": "No pagas por la plataforma hasta que generes ventas. Trabajamos con revenue share, así que nuestros incentivos están 100% alineados con tu crecimiento.",
 
     // Infrastructure Section
     "infra.section": "02 / La Solución",
@@ -142,6 +146,7 @@ const translations: Record<Language, Record<string, string>> = {
     "hero.description": "An all-in-one platform to create digital products, launch offers, automate sales and scale with marketing, CRM and integrated artificial intelligence.",
     "hero.cta": "Apply Now",
     "hero.animation.label": "Knowledge → Product",
+    "hero.badge": "Revenue Share · You don't pay until you sell",
     
     // Navigation
     "nav.inicio": "Home",
@@ -182,6 +187,9 @@ const translations: Record<Language, Record<string, string>> = {
     "pain.point.5": "Your team works across too many platforms at once.",
     "pain.point.6": "Every new launch forces you to start almost from scratch.",
     "pain.point.7": "You don't own or control your customers' data.",
+    "pain.closer.label": "And most importantly:",
+    "pain.closer.title": "We only win when you win.",
+    "pain.closer.desc": "You don't pay for the platform until you generate sales. We work on a revenue share model, so our incentives are 100% aligned with your growth.",
 
     // Infrastructure Section
     "infra.section": "02 / The Solution",
