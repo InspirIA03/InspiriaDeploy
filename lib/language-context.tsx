@@ -17,8 +17,10 @@ const translations: Record<Language, Record<string, string>> = {
     "hero.subtitle": "Tu Negocio Digital En Un Solo Lugar",
     "hero.description": "Una plataforma todo en uno para crear productos digitales, lanzar ofertas, automatizar ventas y escalar con marketing, CRM e inteligencia artificial integrada.",
     "hero.cta": "Aplicar Ahora",
-    "hero.animation.label": "Conocimiento → Producto",
-    "hero.badge": "Revenue Share · No pagas hasta vender",
+    "hero.animation.label": "Solo ganamos cuando tú ganas",
+    "hero.anim.you": "Tú",
+    "hero.anim.us": "Nosotros",
+    "hero.anim.zero": "$0 hasta vender",
     
     // Navigation
     "nav.inicio": "Inicio",
@@ -145,8 +147,10 @@ const translations: Record<Language, Record<string, string>> = {
     "hero.subtitle": "Your Digital Business In One Place",
     "hero.description": "An all-in-one platform to create digital products, launch offers, automate sales and scale with marketing, CRM and integrated artificial intelligence.",
     "hero.cta": "Apply Now",
-    "hero.animation.label": "Knowledge → Product",
-    "hero.badge": "Revenue Share · You don't pay until you sell",
+    "hero.animation.label": "We only win when you win",
+    "hero.anim.you": "You",
+    "hero.anim.us": "Us",
+    "hero.anim.zero": "$0 until you sell",
     
     // Navigation
     "nav.inicio": "Home",
