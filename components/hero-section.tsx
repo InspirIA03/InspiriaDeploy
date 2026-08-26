@@ -68,7 +68,7 @@ function HeroAnimation({ t }: { t: (key: string) => string }) {
   return (
     <div
       ref={containerRef}
-      className="hidden md:flex absolute bottom-16 right-8 lg:bottom-20 lg:right-16 xl:right-24"
+      className="hidden md:flex absolute bottom-16 right-20 lg:bottom-20 lg:right-28 xl:right-36"
       aria-hidden="true"
     >
       <div className="relative w-52 h-52 lg:w-60 lg:h-60">
@@ -133,11 +133,19 @@ function HeroAnimation({ t }: { t: (key: string) => string }) {
           ))}
         </svg>
 
-        {/* line labels */}
-        <span className="absolute font-mono text-[9px] uppercase tracking-[0.15em] text-accent" style={{ top: "8%", right: "2%" }}>
+        {/* line labels — placed to the right of each line's end point so they never overlap the graph */}
+        <span
+          className="absolute flex items-center gap-1 font-mono text-[9px] uppercase tracking-[0.15em] text-accent"
+          style={{ top: "9%", left: "100%", marginLeft: "0.5rem" }}
+        >
+          <span className="inline-block w-2 h-0.5 bg-accent" aria-hidden="true" />
           {t("hero.anim.you")}
         </span>
-        <span className="absolute font-mono text-[9px] uppercase tracking-[0.15em] text-accent/60" style={{ top: "23%", right: "2%" }}>
+        <span
+          className="absolute flex items-center gap-1 font-mono text-[9px] uppercase tracking-[0.15em] text-accent/60"
+          style={{ top: "26%", left: "100%", marginLeft: "0.5rem" }}
+        >
+          <span className="inline-block w-2 h-0.5 bg-accent/50" aria-hidden="true" />
           {t("hero.anim.us")}
         </span>
 
@@ -185,12 +193,35 @@ export function HeroSection() {
     <section ref={sectionRef} id="hero" className="relative min-h-screen flex items-center pl-6 md:pl-28 pr-6 md:pr-12">
       <AnimatedNoise opacity={0.03} />
 
-      {/* Language toggle button */}
+      {/* Language toggle */}
       <button
         onClick={toggleLanguage}
-        className="absolute top-6 right-6 md:top-8 md:right-12 z-50 border border-border/50 px-3 py-1.5 font-mono text-[10px] uppercase tracking-widest text-muted-foreground hover:border-accent hover:text-accent transition-all duration-200"
+        role="switch"
+        aria-checked={language === "en"}
+        aria-label={language === "es" ? "Switch to English" : "Cambiar a Español"}
+        className="group absolute top-6 right-6 md:top-8 md:right-12 z-50 flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest"
       >
-        {language === "es" ? "EN" : "ES"}
+        <span
+          className={`transition-colors duration-200 ${
+            language === "es" ? "text-accent" : "text-muted-foreground/50"
+          }`}
+        >
+          ES
+        </span>
+        <span className="relative inline-flex h-4 w-8 items-center border border-border/60 transition-colors duration-200 group-hover:border-accent">
+          <span
+            className={`absolute h-2.5 w-2.5 bg-accent transition-transform duration-200 ${
+              language === "es" ? "translate-x-[3px]" : "translate-x-[15px]"
+            }`}
+          />
+        </span>
+        <span
+          className={`transition-colors duration-200 ${
+            language === "en" ? "text-accent" : "text-muted-foreground/50"
+          }`}
+        >
+          EN
+        </span>
       </button>
 
       {/* Main content */}
