@@ -238,7 +238,18 @@ export function HeroSection() {
           {t("hero.description")}
         </p>
 
-        <div className="mt-16">
+        {/* Mobile-only subtle value-prop banner */}
+        <div className="md:hidden mt-12 flex items-center gap-2.5">
+          <span className="relative flex h-1.5 w-1.5 shrink-0" aria-hidden="true">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent/70" />
+            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
+          </span>
+          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground/80">
+            {t("hero.animation.label")}
+          </span>
+        </div>
+
+        <div className="mt-8 md:mt-16">
           <a
             href="#apply"
             className="group inline-flex items-center gap-3 border border-foreground/20 px-6 py-3 font-mono text-xs uppercase tracking-widest text-foreground hover:border-accent hover:text-accent transition-all duration-200"
