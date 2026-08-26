@@ -15,6 +15,7 @@ export function PainSection() {
   const introRef = useRef<HTMLParagraphElement>(null)
   const listRef = useRef<HTMLUListElement>(null)
   const lineRef = useRef<HTMLDivElement>(null)
+  const closerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     if (!sectionRef.current) return
@@ -92,6 +93,25 @@ export function PainSection() {
             toggleActions: "play none none reverse",
           },
         })
+      }
+
+      // Revenue-share closer scales/fades in
+      if (closerRef.current) {
+        gsap.fromTo(
+          closerRef.current,
+          { y: 40, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.9,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: closerRef.current,
+              start: "top 85%",
+              toggleActions: "play none none reverse",
+            },
+          },
+        )
       }
     }, sectionRef)
 
@@ -178,6 +198,28 @@ export function PainSection() {
               </li>
             ))}
           </ul>
+        </div>
+
+        {/* Revenue-share closer — incentive alignment */}
+        <div
+          ref={closerRef}
+          className="relative mt-16 md:mt-20 border border-accent/30 bg-accent/[0.04] p-8 md:p-12 overflow-hidden"
+        >
+          {/* Accent corner accents */}
+          <span aria-hidden="true" className="absolute left-0 top-0 h-6 w-px bg-accent/60" />
+          <span aria-hidden="true" className="absolute left-0 top-0 h-px w-6 bg-accent/60" />
+          <span aria-hidden="true" className="absolute right-0 bottom-0 h-6 w-px bg-accent/60" />
+          <span aria-hidden="true" className="absolute right-0 bottom-0 h-px w-6 bg-accent/60" />
+
+          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent block mb-5">
+            {t("pain.closer.label")}
+          </span>
+          <h3 className="font-[var(--font-bebas)] text-3xl md:text-5xl lg:text-6xl tracking-tight leading-[1.02] text-balance">
+            {t("pain.closer.title")}
+          </h3>
+          <p className="mt-6 max-w-2xl font-sans text-base md:text-lg text-foreground/75 leading-relaxed">
+            {t("pain.closer.desc")}
+          </p>
         </div>
       </div>
     </section>
