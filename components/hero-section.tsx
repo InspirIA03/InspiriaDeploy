@@ -149,13 +149,8 @@ function HeroAnimation({ t }: { t: (key: string) => string }) {
           {t("hero.anim.us")}
         </span>
 
-        {/* $0 marker at origin */}
-        <span className="absolute font-mono text-[8px] uppercase tracking-[0.15em] text-muted-foreground/70" style={{ bottom: "2%", left: "0%" }}>
-          {t("hero.anim.zero")}
-        </span>
-
         {/* headline label */}
-        <div className="absolute -bottom-9 left-1/2 -translate-x-1/2 whitespace-nowrap">
+        <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap">
           <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground/80">
             {t("hero.animation.label")}
           </span>
