@@ -4,7 +4,6 @@ import { useRef, useEffect } from "react"
 import { useLanguage } from "@/lib/language-context"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import Script from "next/script"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -172,16 +171,13 @@ export function ApplySection() {
           <iframe
             src="https://api.leadconnectorhq.com/widget/booking/hpe2djMprYxh80mKeeYD"
             allow="payment"
-            style={{ width: "100%", minHeight: "700px", border: "none", overflow: "hidden" }}
-            scrolling="no"
+            style={{ width: "100%", height: "800px", border: "none" }}
+            loading="lazy"
             id="hpe2djMprYxh80mKeeYD_1795126957177"
             title="Booking"
           />
         </div>
       </div>
-
-      {/* External script for form */}
-      <Script src="https://link.msgsndr.com/js/form_embed.js" strategy="lazyOnload" />
     </section>
   )
 }
