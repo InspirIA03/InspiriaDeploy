@@ -170,21 +170,12 @@ export function ApplySection() {
         {/* Form wrapper with border */}
         <div className="relative border border-border/50 bg-card/50 backdrop-blur-sm p-4 md:p-8">
           <iframe
-            src="https://api.leadconnectorhq.com/widget/form/crqSompPxlH2fcaa9Y36"
-            style={{ width: "100%", height: "1120px", border: "none", borderRadius: "3px" }}
-            id="inline-crqSompPxlH2fcaa9Y36"
-            data-layout="{'id':'INLINE'}"
-            data-trigger-type="alwaysShow"
-            data-trigger-value=""
-            data-activation-type="alwaysActivated"
-            data-activation-value=""
-            data-deactivation-type="neverDeactivate"
-            data-deactivation-value=""
-            data-form-name="Form landing page"
-            data-height="1120"
-            data-layout-iframe-id="inline-crqSompPxlH2fcaa9Y36"
-            data-form-id="crqSompPxlH2fcaa9Y36"
-            title="Form landing page"
+            src="https://api.leadconnectorhq.com/widget/booking/hpe2djMprYxh80mKeeYD"
+            allow="payment"
+            style={{ width: "100%", minHeight: "700px", border: "none", overflow: "hidden" }}
+            scrolling="no"
+            id="hpe2djMprYxh80mKeeYD_1795126957177"
+            title="Booking"
           />
         </div>
       </div>
