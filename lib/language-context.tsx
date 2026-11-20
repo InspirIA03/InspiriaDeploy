@@ -133,7 +133,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Apply Section
     "apply.section": "07 / Aplicar",
-    "apply.title": "Si estás listo para crear, vender y automatizar tu negocio digital en un solo sistema, este es tu punto de partida.",
+    "apply.title": "Si estás listo para crear, vender y escalar tu negocio digital en un solo sistema, este es tu punto de partida.",
     "apply.subtitle": "Solicita tu acceso a la plataforma",
     
     // Colophon
@@ -264,7 +264,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Apply Section
     "apply.section": "07 / Apply",
-    "apply.title": "If you're ready to create, sell and automate your digital business in one system, this is your starting point.",
+    "apply.title": "If you're ready to create, sell and scale your digital business in one system, this is your starting point.",
     "apply.subtitle": "Request your access to the platform",
     
     // Colophon

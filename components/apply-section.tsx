@@ -130,8 +130,7 @@ export function ApplySection() {
             const clean = word.toLowerCase().replace(/[.,]/g, "")
             return (
               <span key={index} className="title-word inline-block mr-[0.3em]">
-                {["crear,", "vender", "automatizar", "create,", "sell", "automate"].includes(word.toLowerCase()) ||
-                ["crear", "vender", "automatizar", "create", "sell", "automate"].includes(clean) ? (
+                {["crear", "vender", "escalar", "create", "sell", "scale"].includes(clean) ? (
                   <span className="text-accent">{word}</span>
                 ) : (
                   word
