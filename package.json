@@ -13,6 +13,9 @@
   },
   "dependencies": {
     "@emotion/is-prop-valid": "latest",
+    "@fontsource/bebas-neue": "^5.3.0",
+    "@fontsource/ibm-plex-mono": "^5.3.0",
+    "@fontsource/ibm-plex-sans": "^5.3.0",
     "@hookform/resolvers": "^3.10.0",
     "@nuxt/kit": "latest",
     "@radix-ui/react-accordion": "1.2.2",
