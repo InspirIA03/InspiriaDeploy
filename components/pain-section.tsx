@@ -149,7 +149,7 @@ export function PainSection() {
 
         {/* Title */}
         <div ref={titleRef} className="max-w-4xl">
-          <h2 className="font-[var(--font-bebas)] text-4xl md:text-6xl lg:text-7xl tracking-tight leading-[1.05]">
+          <h2 className="font-[family-name:var(--font-bebas)] text-4xl md:text-6xl lg:text-7xl tracking-tight leading-[1.05]">
             {titleWords.map((word, i) => (
               <span key={i} className="pain-word inline-block mr-[0.25em]">
                 {word.highlight ? <HighlightText parallaxSpeed={0.4}>{t(word.key)}</HighlightText> : t(word.key)}
@@ -214,7 +214,7 @@ export function PainSection() {
           <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent block mb-5">
             {t("pain.closer.label")}
           </span>
-          <h3 className="font-[var(--font-bebas)] text-3xl md:text-5xl lg:text-6xl tracking-tight leading-[1.02] text-balance">
+          <h3 className="font-[family-name:var(--font-bebas)] text-3xl md:text-5xl lg:text-6xl tracking-tight leading-[1.02] text-balance">
             {t("pain.closer.title")}
           </h3>
           <p className="mt-6 max-w-2xl font-sans text-base md:text-lg text-foreground/75 leading-relaxed">

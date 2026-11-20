@@ -111,7 +111,7 @@ export function WorkSection() {
       {/* Section header */}
       <div ref={headerRef} className="mb-10 max-w-4xl">
         <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">{t("work.section")}</span>
-        <h2 className="mt-4 font-[var(--font-bebas)] text-5xl md:text-7xl tracking-tight text-balance leading-[0.95]">
+        <h2 className="mt-4 font-[family-name:var(--font-bebas)] text-5xl md:text-7xl tracking-tight text-balance leading-[0.95]">
           {t("work.title")}
         </h2>
       </div>
@@ -132,7 +132,7 @@ export function WorkSection() {
 
       {/* Outro */}
       <div ref={outroRef} className="mt-16 max-w-3xl border-l-2 border-accent pl-6">
-        <p className="font-[var(--font-bebas)] text-2xl md:text-4xl tracking-tight leading-tight text-pretty">
+        <p className="font-[family-name:var(--font-bebas)] text-2xl md:text-4xl tracking-tight leading-tight text-pretty">
           {t("work.outro")}
         </p>
       </div>
@@ -214,7 +214,7 @@ function AudienceCard({
       <div className="relative z-10">
         <h3
           className={cn(
-            "font-[var(--font-bebas)] text-lg md:text-4xl tracking-tight transition-colors duration-300 leading-[0.95] text-balance break-words",
+            "font-[family-name:var(--font-bebas)] text-lg md:text-4xl tracking-tight transition-colors duration-300 leading-[0.95] text-balance break-words",
             isActive ? "text-accent" : "text-foreground",
           )}
         >

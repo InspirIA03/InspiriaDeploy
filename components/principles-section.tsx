@@ -84,7 +84,7 @@ export function PrinciplesSection() {
       {/* Section header */}
       <div ref={headerRef} className="mb-24">
         <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">{t("principles.section")}</span>
-        <h2 className="mt-4 font-[var(--font-bebas)] text-5xl md:text-7xl tracking-tight">{t("principles.title")}</h2>
+        <h2 className="mt-4 font-[family-name:var(--font-bebas)] text-5xl md:text-7xl tracking-tight">{t("principles.title")}</h2>
       </div>
 
       {/* Staggered principles */}
@@ -101,7 +101,7 @@ export function PrinciplesSection() {
               {principle.number}
             </span>
 
-            <h3 className="font-[var(--font-bebas)] text-4xl md:text-6xl lg:text-8xl tracking-tight leading-none">
+            <h3 className="font-[family-name:var(--font-bebas)] text-4xl md:text-6xl lg:text-8xl tracking-tight leading-none">
               <HighlightText parallaxSpeed={0.6}>
                 {t(principle.titleKey)}
               </HighlightText>

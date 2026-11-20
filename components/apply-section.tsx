@@ -125,7 +125,7 @@ export function ApplySection() {
         />
 
         {/* Main title */}
-        <h2 className="font-[var(--font-bebas)] text-4xl md:text-5xl lg:text-6xl tracking-tight leading-tight mb-6">
+        <h2 className="font-[family-name:var(--font-bebas)] text-4xl md:text-5xl lg:text-6xl tracking-tight leading-tight mb-6">
           {t("apply.title").split(" ").map((word, index) => {
             const clean = word.toLowerCase().replace(/[.,]/g, "")
             return (
