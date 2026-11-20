@@ -13,7 +13,7 @@ interface LanguageContextType {
 const translations: Record<Language, Record<string, string>> = {
   es: {
     // Hero
-    "hero.title": "CREA VENDE AUTOMATIZA",
+    "hero.title": "CREA VENDE ESCALA",
     "hero.subtitle": "Tu Negocio Digital En Un Solo Lugar",
     "hero.description": "Una plataforma todo en uno para crear productos digitales, lanzar ofertas, automatizar ventas y escalar con marketing, CRM e inteligencia artificial integrada.",
     "hero.cta": "Aplicar Ahora",
@@ -143,7 +143,7 @@ const translations: Record<Language, Record<string, string>> = {
   },
   en: {
     // Hero
-    "hero.title": "CREATE SELL AUTOMATE",
+    "hero.title": "CREATE SELL SCALE",
     "hero.subtitle": "Your Digital Business In One Place",
     "hero.description": "An all-in-one platform to create digital products, launch offers, automate sales and scale with marketing, CRM and integrated artificial intelligence.",
     "hero.cta": "Apply Now",

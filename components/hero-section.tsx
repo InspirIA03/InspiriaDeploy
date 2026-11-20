@@ -220,7 +220,7 @@ export function HeroSection() {
       </button>
 
       {/* Main content */}
-      <div ref={contentRef} className="flex-1 w-full max-w-4xl">
+      <div ref={contentRef} className="flex-1 w-full max-w-7xl">
         <SplitFlapAudioProvider>
           <div className="relative">
             <SplitFlapText text={t("hero.title")} speed={80} key={language} />

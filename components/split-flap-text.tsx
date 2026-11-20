@@ -160,20 +160,20 @@ function SplitFlapTextInner({ text, className = "", speed = 50 }: SplitFlapTextP
 
   return (
     <div
-      className={`flex flex-wrap gap-x-[0.5em] md:gap-x-[1.1em] gap-y-2 items-center cursor-pointer ${className}`}
+      className={`flex flex-wrap gap-x-[0.5em] md:gap-x-10 gap-y-2 items-center cursor-pointer ${className}`}
       aria-label={text}
       onMouseEnter={handleMouseEnter}
       onClick={handleMouseEnter}
       style={{ perspective: "1000px" }}
     >
       {words.map((word, wordIndex) => {
-        // Mobile: long words (e.g. "AUTOMATIZA") shrink slightly so they fit on one line.
-        // Desktop: smaller clamp so the whole hero (title + subtitle + copy + CTA) fits on screen.
+        // Mobile: long words (9+ letters) shrink slightly so they fit on one line.
+        // Desktop: sized so the full title sits on a single balanced line.
         const fontSize = isMobile
           ? word.length >= 9
             ? "clamp(2.7rem, 9.8vw, 14rem)"
-            : "clamp(3.2rem, 11vw, 14rem)"
-          : "clamp(3rem, 6.2vw, 6.5rem)"
+            : "clamp(3.2rem, 11.5vw, 14rem)"
+          : "clamp(3rem, 6.4vw, 7.5rem)"
         return (
           <div key={wordIndex} className="inline-flex gap-[0.08em] items-center">
             {word.split("").map((char) => {
