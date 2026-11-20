@@ -87,7 +87,7 @@ export function CapabilitiesSection() {
       >
         <span
           key={ghostNumber}
-          className="block font-[var(--font-bebas)] leading-none text-[40vw] md:text-[26vw] text-transparent"
+          className="block font-[family-name:var(--font-bebas)] leading-none text-[40vw] md:text-[26vw] text-transparent"
           style={{ WebkitTextStroke: "1px var(--color-border)", opacity: 0.4 }}
         >
           {ghostNumber}
@@ -97,7 +97,7 @@ export function CapabilitiesSection() {
       {/* Header */}
       <div ref={headerRef} className="relative z-10 mb-14">
         <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">{t("cap.subtitle")}</span>
-        <h2 className="mt-4 max-w-4xl font-[var(--font-bebas)] text-5xl md:text-7xl tracking-tight leading-[0.95] text-balance">
+        <h2 className="mt-4 max-w-4xl font-[family-name:var(--font-bebas)] text-5xl md:text-7xl tracking-tight leading-[0.95] text-balance">
           {t("cap.title")}
         </h2>
         <p className="mt-5 max-w-xl text-muted-foreground leading-relaxed text-pretty">{t("cap.intro")}</p>
@@ -162,7 +162,7 @@ export function CapabilitiesSection() {
 
                   <span
                     className={cn(
-                      "font-[var(--font-bebas)] text-3xl md:text-5xl tracking-tight leading-none transition-all duration-300",
+                      "font-[family-name:var(--font-bebas)] text-3xl md:text-5xl tracking-tight leading-none transition-all duration-300",
                       isActive ? "text-accent md:translate-x-1" : "text-foreground",
                     )}
                   >
@@ -210,7 +210,7 @@ export function CapabilitiesSection() {
           {/* Objective */}
           <div className="panel-anim mt-auto pt-10">
             <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">{t("cap.objLabel")}</span>
-            <p className="mt-3 font-[var(--font-bebas)] text-2xl md:text-3xl leading-[1.05] tracking-tight text-balance">
+            <p className="mt-3 font-[family-name:var(--font-bebas)] text-2xl md:text-3xl leading-[1.05] tracking-tight text-balance">
               {t(`cap.${activePillar.key}.obj`)}
             </p>
           </div>

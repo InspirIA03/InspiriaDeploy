@@ -109,7 +109,7 @@ export function InfraSection() {
       {/* Section header */}
       <div ref={headerRef} className="max-w-4xl mb-16 md:mb-24">
         <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">{t("infra.section")}</span>
-        <h2 className="mt-5 font-[var(--font-bebas)] text-5xl md:text-7xl lg:text-8xl tracking-tight leading-[0.95]">
+        <h2 className="mt-5 font-[family-name:var(--font-bebas)] text-5xl md:text-7xl lg:text-8xl tracking-tight leading-[0.95]">
           {t("infra.title.1")}{" "}
           <span className="relative inline-block text-accent">
             {t("infra.title.2")}
@@ -171,7 +171,7 @@ export function InfraSection() {
                 )}
                 <span
                   className={cn(
-                    "relative font-[var(--font-bebas)] text-lg md:text-xl tracking-tight text-center leading-none transition-colors duration-700",
+                    "relative font-[family-name:var(--font-bebas)] text-lg md:text-xl tracking-tight text-center leading-none transition-colors duration-700",
                     unified ? "text-accent" : "text-muted-foreground",
                   )}
                 >

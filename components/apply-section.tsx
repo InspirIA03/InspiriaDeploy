@@ -125,13 +125,12 @@ export function ApplySection() {
         />
 
         {/* Main title */}
-        <h2 className="font-[var(--font-bebas)] text-4xl md:text-5xl lg:text-6xl tracking-tight leading-tight mb-6">
+        <h2 className="font-[family-name:var(--font-bebas)] text-4xl md:text-5xl lg:text-6xl tracking-tight leading-tight mb-6">
           {t("apply.title").split(" ").map((word, index) => {
             const clean = word.toLowerCase().replace(/[.,]/g, "")
             return (
               <span key={index} className="title-word inline-block mr-[0.3em]">
-                {["crear,", "vender", "automatizar", "create,", "sell", "automate"].includes(word.toLowerCase()) ||
-                ["crear", "vender", "automatizar", "create", "sell", "automate"].includes(clean) ? (
+                {["crear", "vender", "escalar", "create", "sell", "scale"].includes(clean) ? (
                   <span className="text-accent">{word}</span>
                 ) : (
                   word

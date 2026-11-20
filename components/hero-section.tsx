@@ -230,7 +230,7 @@ export function HeroSection() {
           </div>
         </SplitFlapAudioProvider>
 
-        <h2 className="font-[var(--font-bebas)] text-muted-foreground/60 text-[clamp(1.5rem,4vw,3rem)] mt-4 tracking-wide uppercase">
+        <h2 className="font-[family-name:var(--font-bebas)] text-muted-foreground/60 text-[clamp(1.5rem,4vw,3rem)] mt-4 tracking-wide uppercase">
           {t("hero.subtitle")}
         </h2>
 
